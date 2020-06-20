@@ -1,11 +1,22 @@
-# IDE的配置文件
+.DS_Store
+node_modules
+/dist
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
 .idea
 .vscode
-
-# npm日志
-npm-debug.log
-
-# node 依赖包
-node_modules/
-
-.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
