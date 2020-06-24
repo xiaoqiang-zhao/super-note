@@ -6,7 +6,7 @@
 
 <script>
 // @ is an alias to /src
-import timeLine from '@/components/TimeLineT.vue'
+import timeLine from '@/components/TimeLine.vue'
 
 export default {
   name: 'home',
