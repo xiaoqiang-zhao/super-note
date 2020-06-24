@@ -1,17 +1,17 @@
 <template>
   <div class="home">
-    <timeLine/>
+    <TimeLine/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import timeLine from '@/components/timeLine.vue'
+import timeLine from '@/components/TimeLineT.vue'
 
 export default {
   name: 'home',
   components: {
-    timeLine
+    TimeLine
   }
 }
 </script>
