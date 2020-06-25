@@ -1,6 +1,8 @@
 <template>
   <div class="time-line">
-    <span class="start"></span>
+    <span class="start">
+      <TimeLineTooltip :time="startTime" class="time-line-tooltip"/>
+    </span>
     <span class="line" v-bind:style="{height: startHeight + 'px'}"></span>
     <template v-for="item in lineDotList">
       <span class="dot" v-bind:key="item.dot + '-dot'">{{item.dot}}</span>
@@ -12,6 +14,8 @@
 </template>
 
 <script>
+import TimeLineTooltip from '@/components/TimeLineTooltip';
+
 export default {
   name: 'TimeLine',
   props: {
@@ -31,6 +35,9 @@ export default {
       type: Boolean,
       default: true
     }
+  },
+  components: {
+    TimeLineTooltip
   },
   data() {
     const endTime = this.endTime;
@@ -85,6 +92,7 @@ export default {
 
   .start,
   .end {
+    position: relative;
     width: 14px;
     height: 14px;
     border: 2px solid @color;
@@ -114,6 +122,13 @@ export default {
     color: #fff;
     text-align: center;
     line-height: 20px;
+  }
+  .start,
+  .end,
+  .dot {
+    &:hover .time-line-tooltip {
+      display: block;
+    }
   }
 }
 </style>
