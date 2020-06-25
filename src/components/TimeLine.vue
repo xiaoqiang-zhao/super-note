@@ -1,18 +1,19 @@
 <template>
   <div class="time-line">
+    <span>公元前841年</span>
     <span class="start"></span>
     <span class="line"></span>
-    <span class="dot"></span>
+    <span class="dot">-7</span>
     <span class="line"></span>
-    <span class="dot"></span>
+    <span class="dot">-6</span>
     <span class="line"></span>
-    <span class="dot"></span>
+    <span class="dot">-5</span>
     <span class="line"></span>
-    <span class="dot">-23</span>
+    <span class="dot">-4</span>
     <span class="line"></span>
-    <span class="dot"></span>
+    <span class="dot">-3</span>
     <span class="line"></span>
-    <span class="dot"></span>
+    <span class="dot">-2</span>
   </div>
 </template>
 
