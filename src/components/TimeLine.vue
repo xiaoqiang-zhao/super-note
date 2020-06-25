@@ -1,27 +1,73 @@
 <template>
   <div class="time-line">
-    <span>公元前841年</span>
     <span class="start"></span>
-    <span class="line"></span>
-    <span class="dot">-7</span>
-    <span class="line"></span>
-    <span class="dot">-6</span>
-    <span class="line"></span>
-    <span class="dot">-5</span>
-    <span class="line"></span>
-    <span class="dot">-4</span>
-    <span class="line"></span>
-    <span class="dot">-3</span>
-    <span class="line"></span>
-    <span class="dot">-2</span>
+    <span class="line" v-bind:style="{height: startHeight + 'px'}"></span>
+    <template v-for="item in lineDotList">
+      <span class="dot" v-bind:key="item.dot + '-dot'">{{item.dot}}</span>
+      <span v-if="item !== lineDotList[lineDotList.length - 1]" class="line" v-bind:key="item.dot + '-line'"></span>
+    </template>
+    <span class="line" v-bind:style="{height: endHeight + 'px'}"></span>
+    <span class="end"></span>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'TimeLine',
   props: {
-    msg: String
+    startTime: {
+      tyle: Number,
+      default: -841
+    },
+    endTime: {
+      type: Number,
+      default: new Date().getFullYear()
+    },
+    step: {
+      type: Number,
+      default: 100
+    },
+    isShowTooltip: {
+      type: Boolean,
+      default: true
+    }
+  },
+  data() {
+    const endTime = this.endTime;
+    const step = this.step;
+    let lineDotList = [];
+
+    // 大圈起始位
+    const startTimeRemainder = this.startTime % step;
+    let dotTime = this.startTime;
+    let length = Math.abs(startTimeRemainder);
+    let startHeight = length;
+    if (startTimeRemainder < 0) {
+      dotTime += length;
+    }
+    else if (startTimeRemainder > 0) {
+      dotTime += (step - length);
+    }
+    else {
+      dotTime += step;
+      startHeight = step;
+    }
+
+    for (; dotTime < endTime; dotTime += step) {
+      lineDotList.push({
+        dot: dotTime / step
+      });
+    }
+
+    let endHeight;
+    const endTimeRemainder = Math.abs(this.endTime % step);
+    endHeight = endTimeRemainder ? endTimeRemainder : step;
+
+    return {
+      lineDotList,
+      startHeight,
+      endHeight
+    }
   }
 }
 </script>
