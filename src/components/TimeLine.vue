@@ -89,7 +89,6 @@ export default {
 .time-line {
   @color: #595a5f;
   width: 50px;
-  margin: 0 auto;
   > span {
     display: block;
     margin: 0 auto;
