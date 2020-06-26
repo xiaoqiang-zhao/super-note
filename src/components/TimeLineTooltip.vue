@@ -16,10 +16,10 @@ export default {
     // Before Christ
     const bc = this.time < 0 ? '前' : '';
     if (this.time === 0) {
-      tooltipStr = 'year of our lord';
+      tooltipStr = 'year of lord';
     }
     else if (this.time % this.step === 0) {
-      tooltipStr = `公元${bc}${Math.abs(this.time / this.step)}世纪`;
+      tooltipStr = `公元${bc}${Math.abs(this.time / this.step) + (this.time > 0 ? 1 : 0)}世纪`;
     }
     else {
       tooltipStr = `公元${bc}${Math.abs(this.time)}年`;

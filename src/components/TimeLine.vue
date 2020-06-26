@@ -12,7 +12,9 @@
       <span v-if="item !== lineDotList[lineDotList.length - 1]" class="line" v-bind:key="item.dot + '-line'"></span>
     </template>
     <span class="line" v-bind:style="{height: endHeight + 'px'}"></span>
-    <span class="end"></span>
+    <span class="end">
+      <TimeLineTooltip :time="endTime" :step="step" class="time-line-tooltip"/>
+    </span>
   </div>
 </template>
 
