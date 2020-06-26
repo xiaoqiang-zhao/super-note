@@ -1,11 +1,14 @@
 <template>
   <div class="time-line">
     <span class="start">
-      <TimeLineTooltip :time="startTime" class="time-line-tooltip"/>
+      <TimeLineTooltip :time="startTime" :step="step" class="time-line-tooltip"/>
     </span>
     <span class="line" v-bind:style="{height: startHeight + 'px'}"></span>
     <template v-for="item in lineDotList">
-      <span class="dot" v-bind:key="item.dot + '-dot'">{{item.dot}}</span>
+      <span class="dot" v-bind:key="item.dot + '-dot'">
+        {{item.dot}}
+        <TimeLineTooltip :time="item.dotTime" :step="step" class="time-line-tooltip"/>
+      </span>
       <span v-if="item !== lineDotList[lineDotList.length - 1]" class="line" v-bind:key="item.dot + '-line'"></span>
     </template>
     <span class="line" v-bind:style="{height: endHeight + 'px'}"></span>
@@ -62,6 +65,7 @@ export default {
 
     for (; dotTime < endTime; dotTime += step) {
       lineDotList.push({
+        dotTime,
         dot: dotTime / step
       });
     }
@@ -79,7 +83,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 .time-line {
   @color: #595a5f;
