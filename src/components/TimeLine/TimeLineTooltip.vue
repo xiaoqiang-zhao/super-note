@@ -39,7 +39,6 @@ export default {
   left: 30px;
   display: none;
   color: #000;
-  font-size: 12px;
   white-space: nowrap;
 }
 .start,
