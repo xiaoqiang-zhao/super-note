@@ -3,7 +3,7 @@
     <template v-for="item in lineDotList">
       <div
         v-if="item.topDot"
-        v-bind:key="item.topDot.dotNumber + '-dot'"
+        :key="item.topDot.dotNumber + '-dot'"
         class="dot">
         {{item.topDot.dotNumber}}
         <TimeLineTooltip :time="item.topDot.dotTime" :step="step" class="time-line-tooltip"/>
@@ -12,12 +12,13 @@
         class="line"
         v-bind:key="item.dot + '-line'"
         :style="{height: item.lineLength + 'px'}">
-        <!-- <span
+        <span
           class="space"
           v-for="space in item.spaceList"
-          v-bind:key="space.timeStr">
-          <span class="text">{{space.timeStr}}</span>
-        </span> -->
+          :key="space.timePointStr"
+          :style="{'margin-top': space.height + 'px'}">
+          <span class="text">{{space.timePointStr}}</span>
+        </span>
       </div>
       <div
         v-if="item.bottomDot"
@@ -45,8 +46,7 @@ export default {
     // 开始时间年份
     startTime: {
       tyle: Number,
-      // default: 
-      default: -841
+      default: -1600
     },
     // 结束时间年份
     endTime: {
@@ -131,6 +131,7 @@ export default {
       lineDotList.push({
         topDot,
         lineLength,
+        spaceList: this.createSpaceList(dotTime, dotTime + step < endTime ? bottomTime : endTime),
         bottomDot
       });
 
@@ -151,45 +152,52 @@ export default {
     /**
      * 创建间隔标记
      *
-     * @param {Number} dotTime 起始点年
-     * @param {Number} step 这一段的时间跨度
-     * @param {Boolean} isStart 是否是整个组件的开始时间，组件的开始时间不一定是间隔点
+     * @param {Number} fromTime 起始
+     * @param {Number} toTime 结束
      */
-    createSpaceList(startTime, step, isStart) {
-      // debugger
+    createSpaceList(fromTime, toTime) {
       const arr = [];
-      const space = step / 10;
-      let marginTop = 99;
-      let endDotTime;
-      let dotTime = startTime;
+      const space = this.space;
+      const scale = this.scale;
 
-      // dotTime 取 10 年整数，step 到下一个百年
-      if (isStart) {
-        // 公元前
-        if (startTime % 10 < 0) {
-          dotTime = startTime - (startTime % 10 + space);
-          endDotTime = startTime - startTime % step - space;
-          marginTop = Math.abs(startTime % 10) * 10;
+      while (fromTime + space < toTime) {
+        const fromTimeForSpaceRemainder = fromTime % space;
+        let time;
+        let timePoint;
+        if (fromTime + space < toTime) {
+          if (fromTimeForSpaceRemainder === 0) {
+            time = space;
+          }
+          else if (fromTimeForSpaceRemainder < 0) {
+            time = Math.abs(fromTimeForSpaceRemainder);
+          }
+          else {
+            time = fromTimeForSpaceRemainder;
+          }
         }
-        // 公元
-        else if (startTime % 10 > 0) {
-          dotTime = startTime - (startTime % 10);
-          endDotTime = step - (startTime % step);
-          marginTop = startTime % 10 * 10;
+        else {
+          time = toTime - fromTime;
         }
-      }
-      else {
-        endDotTime = startTime + step - space;
-      }
+        // 减一是刻度 Dom 占的高度
+        const height = time * scale - 1;
 
-      while (dotTime < endDotTime) {
-        dotTime += space
+        if (fromTimeForSpaceRemainder === 0) {
+          timePoint = fromTime + space;
+        }
+        else if (fromTimeForSpaceRemainder < 0) {
+          timePoint = fromTime - fromTimeForSpaceRemainder;
+        }
+        else {
+          timePoint = fromTime + ( space - fromTimeForSpaceRemainder);
+        }
+
         arr.push({
-          time: dotTime,
-          timeStr: dotTime < 0 ? `${-dotTime}BC` : dotTime,
-          marginTop
+          timePoint,
+          timePointStr: timePoint < 0 ? `${-timePoint}BC` : timePoint,
+          height
         });
-        marginTop = 99;
+
+        fromTime = timePoint;
       }
       return arr;
     }
@@ -204,7 +212,7 @@ export default {
   display: flex;
   flex-direction: column;
   width: 28px;
-  margin: 10px 40px;
+  margin: 20px 40px;
   font-size: 12px;
 
   .start,
