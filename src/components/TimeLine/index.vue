@@ -206,8 +206,8 @@ export default {
   @color: #595a5f;
   display: flex;
   flex-direction: column;
-  width: 28px;
-  margin: 20px 40px;
+  width: 50px;
+  margin-right: 5px;
   font-size: 12px;
 
   .start,
@@ -249,7 +249,7 @@ export default {
     box-sizing: border-box;
     width: 25px;
     height: 25px;
-    margin-top: -12.5px;
+    margin: -12.5px 0 0 22px;
     border: 1px solid #30A9DE;
     border-radius: 13px;
     padding: 2px;
