@@ -48,10 +48,11 @@ export default {
   margin: 0 10px 100px;
   .time-line {
     flex: 0 0 50px;
+    margin-right: 41px;
   }
   .dynasty {
-    flex: 0 0 60px;
-    margin: 0 10px;
+    flex: 0 0 81px;
+    margin: 0 5px;
   }
 }
 </style>

@@ -4,12 +4,12 @@
       时间轴
     </div>
     <div class="dynasty china">
-      中国朝代
+      中国
     </div>
     <div class="dynasty europe">
-      欧洲朝代
+      欧洲
     </div>
-    <div>
+    <div class="everything">
       包罗万象
     </div>
   </section>
@@ -33,19 +33,21 @@ export default {
   > div {
     padding: 10px;
     margin-right: 1px;
+    flex: 0 0 70px;
   }
   .time-line {
-    flex: 0 0 50px;
     background: #30A9DE;
   }
   .dynasty {
-    flex: 0 0 70px;
     &.china {
       background: #E53A40;
     }
     &.europe {
       background: #27309A;
     }
+  }
+  .everything {
+    flex: 1;
   }
 }
 </style>
