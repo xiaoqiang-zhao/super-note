@@ -36,7 +36,7 @@
  * @file TimeLine 组件
  *
  * - 起始时间和结束时间的点单独设置
- * - 
+ * - 每 100 年为一个时间段，在里面加刻度
  */
 import TimeLineTooltip from './TimeLineTooltip';
 
@@ -51,7 +51,7 @@ export default {
     // 结束时间年份
     endTime: {
       type: Number,
-      default: new Date().getFullYear()
+      default: new Date().getFullYear() + 1
     },
     // 大节点，默认 100 年
     step: {
@@ -137,14 +137,9 @@ export default {
 
       dotTime = bottomTime;
     }
-    console.log(lineDotList);
 
     return {
-      lineDotList,
-      // startHeight,
-      // startSpaceList: this.createSpaceList(this.startTime, step, true),
-      // endHeight: endHeight * 10,
-      // endSpaceList: this.createSpaceList(this.endTime - this.endTime % step, step),
+      lineDotList
     }
   },
   methods: {
@@ -230,7 +225,7 @@ export default {
     width: 3px;
     margin-top: -12.5px;
     text-align: right;
-    background: @color;
+    background: #30A9DE;
     .space {
       position: relative;
       align-self: flex-end;
@@ -238,7 +233,7 @@ export default {
       display: block;
       margin-top: 99px;
       height: 1px;
-      border-right: 5px solid #2c3e50;
+      border-right: 5px solid #106990;
       text-align: right;
       .text {
         position: absolute;
@@ -255,10 +250,10 @@ export default {
     width: 25px;
     height: 25px;
     margin-top: -12.5px;
-    border: 1px solid @color;
+    border: 1px solid #30A9DE;
     border-radius: 13px;
     padding: 2px;
-    background-color: #83acae;
+    background-color: #30A9DE;
     background-clip: content-box;
     color: #fff;
     text-align: center;
