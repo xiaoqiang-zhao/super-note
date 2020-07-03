@@ -16,7 +16,11 @@
  */
 export default {
   props: {
-    dynastyData: Object
+    dynastyData: Object,
+    scale: {
+      type: Number,
+      default: 10
+    }
   },
   data() {
     const list = [];
@@ -30,7 +34,7 @@ export default {
     this.dynastyData.list.forEach(item => {
       item.style = {
         background: clors[index],
-        height: (item.to - item.from) * 10 + 'px'
+        height: (item.to - item.from) * this.scale + 'px'
       };
       list.push(item);
       index++;

@@ -2,8 +2,9 @@
   <div class="home">
     <HeaderBox/>
     <section class="body-section">
-      <TimeLine class="time-line"/>
-      <Dynasty class="dynasty" :dynastyData="chinaDynasty"/>
+      <TimeLine class="time-line" :scale="scale"/>
+      <Dynasty class="dynasty" :dynastyData="chinaDynasty" :scale="scale"/>
+      <Dynasty class="dynasty" :dynastyData="europeDynasty" :scale="scale"/>
       <section class="everything-container">
         <Book/>
       </section>
@@ -21,6 +22,7 @@ import Dynasty from '@/components/Dynasty'
 import Book from '@/components/Book.vue'
 
 import chinaDynasty from '@/components/Dynasty/china';
+import europeDynasty from '@/components/Dynasty/europe';
 
 export default {
   name: 'home',
@@ -32,7 +34,9 @@ export default {
   },
   data() {
     return {
-      chinaDynasty
+      scale: 1,
+      chinaDynasty,
+      europeDynasty
     }
   }
 }
@@ -46,7 +50,8 @@ export default {
     flex: 0 0 50px;
   }
   .dynasty {
-    flex: 0 0 50px;
+    flex: 0 0 60px;
+    margin: 0 10px;
   }
 }
 </style>

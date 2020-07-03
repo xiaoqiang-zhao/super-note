@@ -82,7 +82,7 @@ export default {
     const startTime = this.startTime;
     const endTime = this.endTime;
     const step = this.step;
-    const space = this.space;
+    const scale = this.scale;
     const lineDotList = [];
     let dotTime = startTime;
 
@@ -109,7 +109,7 @@ export default {
       else {
         time = endTime - dotTime;
       }
-      lineLength = time * space;
+      lineLength = time * scale;
 
       if (dotTimeForStepRemainder === 0) {
         bottomTime = dotTime + step;

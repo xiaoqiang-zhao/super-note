@@ -35,11 +35,11 @@ export default {
     margin-right: 1px;
   }
   .time-line {
-    flex: 0 0 100px;
+    flex: 0 0 50px;
     background: #30A9DE;
   }
   .dynasty {
-    flex: 0 0 100px;
+    flex: 0 0 70px;
     &.china {
       background: #E53A40;
     }

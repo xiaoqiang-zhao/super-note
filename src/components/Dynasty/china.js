@@ -1,6 +1,6 @@
 
 const chinaDynasty = {
-  title: '中国',
+  title: '中国历史朝代',
   list: [
     {
       name: '商',
