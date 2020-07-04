@@ -4,8 +4,9 @@
     <section class="body-section">
       <TimeLine class="time-line" :scale="scale" :space="20"/>
       <Dynasty class="dynasty" :dynastyData="chinaDynasty" :scale="scale"/>
-      <Dynasty class="dynasty" :dynastyData="europeDynasty" :scale="scale"/>
+      <Dynasty class="dynasty" :dynastyData="europeDynasty" :scale="scale" :colors="colors"/>
       <section class="everything-container">
+        <Persion v-for="item in persions" :key="item.name" :data="item" :scale="scale"/>
         <Book/>
       </section>
     </section>
@@ -19,10 +20,12 @@
 import HeaderBox from '@/components/HeaderBox'
 import TimeLine from '@/components/TimeLine'
 import Dynasty from '@/components/Dynasty'
-import Book from '@/components/Book.vue'
+import Persion from '@/components/Persion'
+import Book from '@/components/Book'
 
 import chinaDynasty from '@/components/Dynasty/china';
 import europeDynasty from '@/components/Dynasty/europe';
+import persions from '@/data/Persions';
 
 export default {
   name: 'home',
@@ -30,13 +33,21 @@ export default {
     HeaderBox,
     TimeLine,
     Dynasty,
+    Persion,
     Book
   },
   data() {
     return {
       scale: 1,
       chinaDynasty,
-      europeDynasty
+      europeDynasty,
+      colors: [
+        '#27309A',
+        '#E97F02',
+        '#8CD790',
+        '#30A9DE'
+      ],
+      persions
     }
   }
 }
@@ -53,6 +64,9 @@ export default {
   .dynasty {
     flex: 0 0 81px;
     margin: 0 5px;
+  }
+  .everything-container {
+    position: relative;
   }
 }
 </style>

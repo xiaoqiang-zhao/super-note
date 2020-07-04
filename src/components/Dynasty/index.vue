@@ -16,20 +16,27 @@
  */
 export default {
   props: {
+    // 朝代数据
     dynastyData: Object,
+    // 缩放比例
     scale: {
       type: Number,
       default: 10
+    },
+    // 颜色库，顺序调取
+    colors: {
+      type: Array,
+      default: [
+        '#E53A40',
+        '#E97F02',
+        '#8CD790',
+        '#30A9DE'
+      ]
     }
   },
   data() {
     const list = [];
-    const clors = [
-      '#E53A40',
-      '#E97F02',
-      '#8CD790',
-      '#30A9DE'
-    ];
+    const clors = this.colors;
     let index = 0;
     this.dynastyData.list.forEach(item => {
       item.style = {
@@ -44,9 +51,7 @@ export default {
     });
 
     return {
-      list,
-      // 颜色库，顺序调取
-      clors,
+      list
     };
   }
 }
