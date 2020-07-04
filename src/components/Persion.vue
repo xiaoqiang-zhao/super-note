@@ -1,6 +1,6 @@
 <template>
   <article class="persion" :style="style">
-    <!-- <img src="" alt=""> -->
+    <img :src="data.portrait" alt="">
     <footer>
       <div>{{data.name}}</div>
     </footer>
@@ -40,9 +40,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .persion {
   position: absolute;
+  img {
+    display: block;
+    width: 100px;
+  }
 }
 
 </style>
