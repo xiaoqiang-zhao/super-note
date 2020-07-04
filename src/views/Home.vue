@@ -38,7 +38,7 @@ export default {
   },
   data() {
     return {
-      scale: 1,
+      scale: 10,
       chinaDynasty,
       europeDynasty,
       colors: [

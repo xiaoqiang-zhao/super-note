@@ -2,7 +2,11 @@
   <article class="persion" :style="style">
     <img :src="data.portrait" alt="">
     <footer>
-      <div>{{data.name}}</div>
+      <div class="name">{{data.name}}</div>
+      <div class="born">
+        {{data.bornIn}}
+        <span>{{data.diedIn}}</span>
+      </div>
     </footer>
   </article>
 </template>
@@ -46,6 +50,12 @@ export default {
   img {
     display: block;
     width: 100px;
+  }
+  .born {
+    text-align: left;
+    span {
+      float: right;
+    }
   }
 }
 
