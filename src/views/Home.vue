@@ -2,7 +2,7 @@
   <div class="home">
     <HeaderBox/>
     <section class="body-section">
-      <TimeLine class="time-line" :scale="scale"/>
+      <TimeLine class="time-line" :scale="scale" :space="20"/>
       <Dynasty class="dynasty" :dynastyData="chinaDynasty" :scale="scale"/>
       <Dynasty class="dynasty" :dynastyData="europeDynasty" :scale="scale"/>
       <section class="everything-container">
