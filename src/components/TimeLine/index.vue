@@ -78,71 +78,86 @@ export default {
     TimeLineTooltip
   },
   data() {
-    // 首位圈
-    const startTime = this.startTime;
-    const endTime = this.endTime;
-    const step = this.step;
-    const scale = this.scale;
-    const lineDotList = [];
-    let dotTime = startTime;
-
-    while (dotTime < endTime) {
-      const dotTimeForStepRemainder = dotTime % step;
-
-      let topDot = null;
-      let bottomDot = null;
-      let lineLength;
-      let time;
-      let bottomTime;
-
-      // 大圈起始位
-      if (dotTime === startTime && startTime % step === 0) {
-        topDot = {
-          dotTime: startTime,
-          dotNumber: startTime / step
-        };
-      }
-      
-      if (dotTime + step < endTime) {
-        time = dotTimeForStepRemainder === 0 ? step : Math.abs(dotTimeForStepRemainder);
-      }
-      else {
-        time = endTime - dotTime;
-      }
-      lineLength = time * scale;
-
-      if (dotTimeForStepRemainder === 0) {
-        bottomTime = dotTime + step;
-      }
-      else if (dotTimeForStepRemainder < 0) {
-        bottomTime = dotTime - dotTimeForStepRemainder;
-      }
-      else {
-        bottomTime = dotTime + (step - dotTimeForStepRemainder);
-      }
-
-      if (bottomTime <= endTime) {
-        bottomDot = {
-          dotTime: bottomTime,
-          dotNumber: bottomTime / step
-        }
-      }
-
-      lineDotList.push({
-        topDot,
-        lineLength,
-        spaceList: this.createSpaceList(dotTime, dotTime + step < endTime ? bottomTime : endTime),
-        bottomDot
-      });
-
-      dotTime = bottomTime;
-    }
-
     return {
-      lineDotList
+      lineDotList: []
     }
   },
+  watch: {
+    scale(value) {
+      this.init();
+    }
+  },
+  mounted() {
+    this.init();
+  },
   methods: {
+
+    /**
+     * 创建点线数据
+     */
+    init() {
+      // 首位圈
+      const startTime = this.startTime;
+      const endTime = this.endTime;
+      const step = this.step;
+      const scale = this.scale;
+      const lineDotList = [];
+      let dotTime = startTime;
+
+      while (dotTime < endTime) {
+        const dotTimeForStepRemainder = dotTime % step;
+
+        let topDot = null;
+        let bottomDot = null;
+        let lineLength;
+        let time;
+        let bottomTime;
+
+        // 大圈起始位
+        if (dotTime === startTime && startTime % step === 0) {
+          topDot = {
+            dotTime: startTime,
+            dotNumber: startTime / step
+          };
+        }
+        
+        if (dotTime + step < endTime) {
+          time = dotTimeForStepRemainder === 0 ? step : Math.abs(dotTimeForStepRemainder);
+        }
+        else {
+          time = endTime - dotTime;
+        }
+        lineLength = time * scale;
+
+        if (dotTimeForStepRemainder === 0) {
+          bottomTime = dotTime + step;
+        }
+        else if (dotTimeForStepRemainder < 0) {
+          bottomTime = dotTime - dotTimeForStepRemainder;
+        }
+        else {
+          bottomTime = dotTime + (step - dotTimeForStepRemainder);
+        }
+
+        if (bottomTime <= endTime) {
+          bottomDot = {
+            dotTime: bottomTime,
+            dotNumber: bottomTime / step
+          }
+        }
+
+        lineDotList.push({
+          topDot,
+          lineLength,
+          spaceList: this.createSpaceList(dotTime, dotTime + step < endTime ? bottomTime : endTime),
+          bottomDot
+        });
+
+        dotTime = bottomTime;
+      }
+
+      this.lineDotList = lineDotList;
+    },
 
     /**
      * 创建间隔标记

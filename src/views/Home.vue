@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HeaderBox/>
+    <HeaderBox :scale="scale" @changeScale="changeScale"/>
     <section class="body-section">
       <TimeLine class="time-line" :scale="scale" :space="20"/>
       <Dynasty class="dynasty" :dynastyData="chinaDynasty" :scale="scale"/>
@@ -49,6 +49,15 @@ export default {
       ],
       persions
     }
+  },
+  methods: {
+
+    /**
+     * 改变比例尺，时间与页面尺寸的比例在 1:1 和 1:10 之间切换
+     */
+    changeScale(value) {
+      this.scale = value;
+    }
   }
 }
 </script>
@@ -67,6 +76,7 @@ export default {
   }
   .everything-container {
     position: relative;
+    padding-left: 5px;
   }
 }
 </style>

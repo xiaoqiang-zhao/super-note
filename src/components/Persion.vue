@@ -1,6 +1,8 @@
 <template>
   <article class="persion" :style="style">
-    <img :src="data.portrait" alt="">
+    <div class="img-container">
+      <img :src="data.portrait" alt="头像">
+    </div>
     <footer>
       <div class="name">{{data.name}}</div>
       <div class="born">
@@ -30,16 +32,26 @@ export default {
     },
   },
   data() {
-    const positionTop = (this.data.bornIn - this.startTime) * this.scale + 'px';
-    const style = {
-      top: positionTop 
-    };
     return {
-      style
+      style: {}
     };
   },
   mounted() {
+    this.init();
+  },
+  watch: {
+    scale(value) {
+      this.init();
+    }
+  },
+  methods: {
 
+    init() {
+      const positionTop = (this.data.bornIn - this.startTime) * this.scale + 'px';
+      this.style = {
+        top: positionTop 
+      };
+    }
   }
 }
 </script>
@@ -47,9 +59,14 @@ export default {
 <style lang="less" scoped>
 .persion {
   position: absolute;
-  img {
-    display: block;
+  .img-container {
     width: 100px;
+    height: 130px;
+    overflow: hidden;
+    img {
+      display: block;
+      width: 100%;
+    }
   }
   .born {
     text-align: left;

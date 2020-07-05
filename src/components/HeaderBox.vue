@@ -1,6 +1,6 @@
 <template>
   <section class="header-box">
-    <div class="time-line">
+    <div class="time-line" @click="changeScale">
       时间轴
     </div>
     <div class="dynasty china">
@@ -17,8 +17,24 @@
 
 <script>
 export default {
+  props: {
+    // 比例，一年/像素高度
+    scale: {
+      type: Number,
+      default: 10
+    },
+  },
   data() {
     return {};
+  },
+  methods: {
+    
+    /**
+     * 改变比例尺，时间与页面尺寸的比例在 1:1 和 1:10 之间切换
+     */
+    changeScale() {
+      this.$emit('changeScale', this.scale === 1 ? 10 : 1);
+    }
   }
 }
 </script>

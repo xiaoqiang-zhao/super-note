@@ -34,25 +34,37 @@ export default {
       ]
     }
   },
+  watch: {
+    scale(value) {
+      this.init();
+    }
+  },
   data() {
-    const list = [];
-    const clors = this.colors;
-    let index = 0;
-    this.dynastyData.list.forEach(item => {
-      item.style = {
-        background: clors[index],
-        height: (item.to - item.from) * this.scale + 'px'
-      };
-      list.push(item);
-      index++;
-      if (index + 1 > clors.length) {
-        index = 0;
-      }
-    });
-
     return {
-      list
+      list: []
     };
+  },
+  mounted() {
+    this.init();
+  },
+  methods: {
+    init() {
+      const list = [];
+      const clors = this.colors;
+      let index = 0;
+      this.dynastyData.list.forEach(item => {
+        item.style = {
+          background: clors[index],
+          height: (item.to - item.from) * this.scale + 'px'
+        };
+        list.push(item);
+        index++;
+        if (index + 1 > clors.length) {
+          index = 0;
+        }
+      });
+      this.list = list;
+    }
   }
 }
 </script>
