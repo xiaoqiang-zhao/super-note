@@ -26,5 +26,11 @@ export default [
     bornIn: -551,
     diedIn: -479,
     portrait: '/static/kongzi.jpeg'
+  },
+  {
+    name: '孟子',
+    bornIn: -250,
+    diedIn: -150,
+    portrait: '/static/kongzi.jpeg'
   }
 ];
