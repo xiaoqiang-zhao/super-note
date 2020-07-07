@@ -33,7 +33,8 @@ export default {
      * 改变比例尺，时间与页面尺寸的比例在 1:1 和 1:10 之间切换
      */
     changeScale() {
-      this.$emit('changeScale', this.scale === 1 ? 10 : 1);
+      this.$store.dispatch('changeScale', this.scale === 1 ? 10 : 1);
+      // this.$store.commit('setScale', this.scale === 1 ? 10 : 1);
     }
   }
 }

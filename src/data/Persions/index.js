@@ -4,6 +4,12 @@
 
 export default [
   {
+    name: '孔子',
+    bornIn: -551,
+    diedIn: -479,
+    portrait: '/static/kongzi.jpeg'
+  },
+  {
     name: '苏格拉底',
     bornIn: -471,
     diedIn: -399,
@@ -12,7 +18,7 @@ export default [
   {
     name: '柏拉图',
     bornIn: -429,
-    diedIn: -437,
+    diedIn: -347,
     portrait: '/static/bolatu.jpg'
   },
   {
@@ -22,15 +28,9 @@ export default [
     portrait: '/static/yalishiduode.jpg'
   },
   {
-    name: '孔子',
-    bornIn: -551,
-    diedIn: -479,
-    portrait: '/static/kongzi.jpeg'
-  },
-  {
     name: '孟子',
     bornIn: -250,
     diedIn: -150,
-    portrait: '/static/kongzi.jpeg'
+    portrait: '/static/mengzi.png'
   }
 ];

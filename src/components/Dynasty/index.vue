@@ -21,7 +21,7 @@ export default {
     // 缩放比例
     scale: {
       type: Number,
-      default: 10
+      default: 1
     },
     // 颜色库，顺序调取
     colors: {
