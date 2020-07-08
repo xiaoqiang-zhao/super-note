@@ -7,6 +7,7 @@ export default Vuex.createStore({
     // 历史人物列表
     persionPositionList: []
   },
+  getters: {},
   mutations: {
 
     /**
@@ -78,11 +79,10 @@ export default Vuex.createStore({
       // 在业务组件中用 this.$store.dispatch('changeScale', 10) 调用
       // 
       // 另一种在一个 mutation 方法中改变两个 state 属性
-      // state.persionPositionList = [];
+      state.persionPositionList = [];
       state.scale = value;
     }
   },
-  getters: {},
   actions: {
 
     /**
@@ -90,10 +90,10 @@ export default Vuex.createStore({
      * @param {Object} context 
      * @param {Number} value 分辨率
      */
-    changeScale(context, value) {
-      context.commit('clearPersionPositionList');
-      context.commit('setScale', value);
-    }
+    // changeScale(context, value) {
+    //   context.commit('clearPersionPositionList');
+    //   context.commit('setScale', value);
+    // }
   },
   modules: {
   }

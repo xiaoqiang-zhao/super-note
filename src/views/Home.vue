@@ -39,7 +39,6 @@ export default {
   },
   data() {
     return {
-      scale: this.$store.state.scale,
       chinaDynasty,
       europeDynasty,
       colors: [
@@ -49,6 +48,12 @@ export default {
         '#30A9DE'
       ],
       persions
+    }
+  },
+  computed: {
+    // 缩放率
+    scale() {
+      return this.$store.state.scale
     }
   },
   methods: {
