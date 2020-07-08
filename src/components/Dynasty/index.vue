@@ -14,19 +14,20 @@
 /**
  * @file 朝代组件
  */
+
+import Base from '../Base'
+
 export default {
+  mixins: [Base],
   props: {
     // 朝代数据
-    dynastyData: Object,
-    // 缩放比例
-    scale: {
-      type: Number,
-      default: 1
+    dynastyData: {
+      type: Object
     },
     // 颜色库，顺序调取
     colors: {
       type: Array,
-      default: [
+      default: () => [
         '#E53A40',
         '#E97F02',
         '#8CD790',
@@ -34,18 +35,10 @@ export default {
       ]
     }
   },
-  watch: {
-    scale(value) {
-      this.init();
-    }
-  },
   data() {
     return {
       list: []
     };
-  },
-  mounted() {
-    this.init();
   },
   methods: {
     init() {

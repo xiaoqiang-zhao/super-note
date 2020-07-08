@@ -14,7 +14,10 @@
 </template>
 
 <script>
+import Base from './Base'
+
 export default {
+  mixins: [Base],
   props: {
     data: {
       type: Object,
@@ -24,26 +27,13 @@ export default {
     startTime: {
       tyle: Number,
       default: -1600
-    },
-    // 缩放比例
-    scale: {
-      type: Number,
-      default: 10
-    },
+    }
   },
   data() {
     return {
       style: {},
       lifeTimeStyle: null
     };
-  },
-  mounted() {
-    this.init();
-  },
-  watch: {
-    scale() {
-      this.init();
-    }
   },
   methods: {
 

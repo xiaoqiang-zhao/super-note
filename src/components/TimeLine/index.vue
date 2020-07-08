@@ -38,9 +38,11 @@
  * - 起始时间和结束时间的点单独设置
  * - 每 100 年为一个时间段，在里面加刻度
  */
-import TimeLineTooltip from './TimeLineTooltip';
+import Base from '../Base'
+import TimeLineTooltip from './TimeLineTooltip'
 
 export default {
+  mixins: [Base],
   name: 'TimeLine',
   props: {
     // 开始时间年份
@@ -63,11 +65,6 @@ export default {
       type: Number,
       default: 10
     },
-    // 比例，一年/像素高度
-    scale: {
-      type: Number,
-      default: 10
-    },
     // 大节点 hover 时是否展示 Tooltip
     isShowTooltip: {
       type: Boolean,
@@ -81,14 +78,6 @@ export default {
     return {
       lineDotList: []
     }
-  },
-  watch: {
-    scale(value) {
-      this.init();
-    }
-  },
-  mounted() {
-    this.init();
   },
   methods: {
 

@@ -2,7 +2,6 @@
   <div class="home">
     <HeaderBox :scale="scale" @changeScale="changeScale"/>
     <section class="body-section">
-      <!-- todo: 提取公共部分，用 mixin -->
       <TimeLine class="time-line" :scale="scale" :space="20"/>
       <Dynasty class="dynasty" :dynastyData="chinaDynasty" :scale="scale"/>
       <Dynasty class="dynasty" :dynastyData="europeDynasty" :scale="scale" :colors="colors"/>
