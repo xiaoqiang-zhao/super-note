@@ -1,17 +1,20 @@
 <template>
   <section class="header-box">
-    <div class="time-line" @click="changeScale">
-      时间轴
+    <div class="item-container">
+      <div class="time-line" @click="changeScale">
+        时间轴
+      </div>
+      <div class="dynasty china">
+        中国
+      </div>
+      <div class="dynasty europe">
+        欧洲
+      </div>
+      <div class="everything">
+        包罗万象
+      </div>
     </div>
-    <div class="dynasty china">
-      中国
-    </div>
-    <div class="dynasty europe">
-      欧洲
-    </div>
-    <div class="everything">
-      包罗万象
-    </div>
+    <div class="placeholder"></div>
   </section>
 </template>
 
@@ -42,29 +45,41 @@ export default {
 
 <style lang="less" scoped>
 .header-box {
-  display: flex;
-  margin: 30px 10px;
-  background: #285943;
-  border: 1px solid #285943;
+  position: relative;
+  margin: 10px 10px 20px 10px;
   color: #fff;
-  > div {
-    padding: 10px;
-    margin-right: 1px;
-    flex: 0 0 70px;
-  }
-  .time-line {
-    background: #30A9DE;
-  }
-  .dynasty {
-    &.china {
-      background: #E53A40;
+
+  .item-container {
+    position: fixed;
+    z-index: 3;
+    top: 10px;
+    width: 100%;
+    display: flex;
+    border: 1px solid #285943;
+    background: #285943;
+    > div {
+      padding: 10px;
+      margin-right: 1px;
+      flex: 0 0 70px;
     }
-    &.europe {
-      background: #27309A;
+    .time-line {
+      background: #30A9DE;
+    }
+    .dynasty {
+      &.china {
+        background: #E53A40;
+      }
+      &.europe {
+        background: #27309A;
+      }
+    }
+    .everything {
+      flex: 1;
     }
   }
-  .everything {
-    flex: 1;
+
+  .placeholder {
+    height: 43px;
   }
 }
 </style>
