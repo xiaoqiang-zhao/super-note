@@ -148,15 +148,27 @@ export default [
     portrait: '/static/IsaacNewton.jpeg'
   },
   {
+    name: '亚当·斯密',
+    bornIn: 1723,
+    diedIn: 1790,
+    portrait: '/static/AdamSmith.jpeg'
+  },
+  {
     name: '贝多芬',
     bornIn: 1770,
     diedIn: 1827,
     portrait: '/static/Beethoven.jpg'
   },
   {
-    name: '亚当·斯密',
-    bornIn: 1723,
-    diedIn: 1790,
-    portrait: '/static/AdamSmith.jpeg'
+    name: '洛克菲勒',
+    bornIn: 1839,
+    diedIn: 1937,
+    portrait: '/static/Rockefeller.jpg'
+  },
+  {
+    name: '蒙台梭利',
+    bornIn: 1870,
+    diedIn: 1952,
+    portrait: '/static/Montessori.jpg'
   },
 ];
