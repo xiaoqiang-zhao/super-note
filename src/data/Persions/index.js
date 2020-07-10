@@ -7,168 +7,168 @@ export default [
     name: '荷马',
     bornIn: -873,
     diedIn: -798,
-    portrait: '/static/Homer.jpeg'
+    portrait: '/static/persions-portrait/Homer.jpeg'
   },
   {
     name: '老子',
     bornIn: -571,
     diedIn: -471,
-    portrait: '/static/laozi.jpeg'
+    portrait: '/static/persions-portrait/laozi.jpeg'
   },
   {
     name: '释迦牟尼',
     bornIn: -563,
     diedIn: -483,
-    portrait: '/static/Buddha_meditating.jpeg'
+    portrait: '/static/persions-portrait/Buddha_meditating.jpeg'
   },
   {
     name: '孔子',
     bornIn: -551,
     diedIn: -479,
-    portrait: '/static/kongzi.jpeg'
+    portrait: '/static/persions-portrait/kongzi.jpeg'
   },
   {
     name: '苏格拉底',
     bornIn: -471,
     diedIn: -399,
-    portrait: '/static/sugeladi.jpg'
+    portrait: '/static/persions-portrait/sugeladi.jpg'
   },
   {
     name: '柏拉图',
     bornIn: -429,
     diedIn: -347,
-    portrait: '/static/bolatu.jpg'
+    portrait: '/static/persions-portrait/bolatu.jpg'
   },
   {
     name: '亚里士多德',
     bornIn: -384,
     diedIn: -322,
-    portrait: '/static/yalishiduode.jpg'
+    portrait: '/static/persions-portrait/yalishiduode.jpg'
   },
   {
     name: '孟子',
     bornIn: -250,
     diedIn: -150,
-    portrait: '/static/mengzi.png'
+    portrait: '/static/persions-portrait/mengzi.png'
   },
   {
     name: '凯撒大帝',
     bornIn: -100,
     diedIn: -44,
-    portrait: '/static/kaisa.jpg'
+    portrait: '/static/persions-portrait/kaisa.jpg'
   },
   {
     name: '耶稣',
     bornIn: -4,
     diedIn: 33,
-    portrait: '/static/Christ.jpeg'
+    portrait: '/static/persions-portrait/Christ.jpeg'
   },
   {
     name: '蔡伦',
     bornIn: 50,
     diedIn: 121,
-    portrait: '/static/cailun.jpeg'
+    portrait: '/static/persions-portrait/cailun.jpeg'
   },
   {
     name: '陶渊明',
     bornIn: 352,
     diedIn: 427,
-    portrait: '/static/taoyuanming.jpg'
+    portrait: '/static/persions-portrait/taoyuanming.jpg'
   },
   {
     name: '穆罕默德',
     bornIn: 571,
     diedIn: 632,
-    portrait: '/static/mohammed.jpeg'
+    portrait: '/static/persions-portrait/mohammed.jpeg'
   },
   {
     name: '李白',
     bornIn: 701,
     diedIn: 762,
-    portrait: '/static/Libai.jpeg'
+    portrait: '/static/persions-portrait/Libai.jpeg'
   },
   {
     name: '杜甫',
     bornIn: 712,
     diedIn: 770,
-    portrait: '/static/dufu.jpeg'
+    portrait: '/static/persions-portrait/dufu.jpeg'
   },
   {
     name: '王安石',
     bornIn: 1021,
     diedIn: 1086,
-    portrait: '/static/wanganshi.jpg'
+    portrait: '/static/persions-portrait/wanganshi.jpg'
   },
   {
     name: '李清照',
     bornIn: 1084,
     diedIn: 1155,
-    portrait: '/static/liqingzhao.jpg'
+    portrait: '/static/persions-portrait/liqingzhao.jpg'
   },
   {
     name: '但丁',
     bornIn: 1265,
     diedIn: 1321,
-    portrait: '/static/Dante.jpg'
+    portrait: '/static/persions-portrait/Dante.jpg'
   },
   {
     name: '薄伽丘',
     bornIn: 1313,
     diedIn: 1375,
-    portrait: '/static/bojiaqiu.png'
+    portrait: '/static/persions-portrait/bojiaqiu.png'
   },
   {
     name: '古腾堡',
     bornIn: 1398,
     diedIn: 1468,
-    portrait: '/static/Gutenberg.jpeg'
+    portrait: '/static/persions-portrait/Gutenberg.jpeg'
   },
   {
     name: '哥伦布',
     bornIn: 1451,
     diedIn: 1506,
-    portrait: '/static/Columbus.jpeg'
+    portrait: '/static/persions-portrait/Columbus.jpeg'
   },
   {
     name: '米开朗基罗',
     bornIn: 1475,
     diedIn: 1564,
-    portrait: '/static/Volterra.jpeg'
+    portrait: '/static/persions-portrait/Volterra.jpeg'
   },
   {
     name: '莎士比亚',
     bornIn: 1564,
     diedIn: 1661,
-    portrait: '/static/Shakespeare.jpeg'
+    portrait: '/static/persions-portrait/Shakespeare.jpeg'
   },
   {
     name: '牛顿',
     bornIn: 1643,
     diedIn: 1727,
-    portrait: '/static/IsaacNewton.jpeg'
+    portrait: '/static/persions-portrait/IsaacNewton.jpeg'
   },
   {
     name: '亚当·斯密',
     bornIn: 1723,
     diedIn: 1790,
-    portrait: '/static/AdamSmith.jpeg'
+    portrait: '/static/persions-portrait/AdamSmith.jpeg'
   },
   {
     name: '贝多芬',
     bornIn: 1770,
     diedIn: 1827,
-    portrait: '/static/Beethoven.jpg'
+    portrait: '/static/persions-portrait/Beethoven.jpg'
   },
   {
     name: '洛克菲勒',
     bornIn: 1839,
     diedIn: 1937,
-    portrait: '/static/Rockefeller.jpg'
+    portrait: '/static/persions-portrait/Rockefeller.jpg'
   },
   {
     name: '蒙台梭利',
     bornIn: 1870,
     diedIn: 1952,
-    portrait: '/static/Montessori.jpg'
+    portrait: '/static/persions-portrait/Montessori.jpg'
   },
 ];
