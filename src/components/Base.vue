@@ -10,6 +10,11 @@ export default {
     scale: {
       type: Number,
       default: store.state.scale
+    },
+    // 开始时间年份，用于确定在时间方向上的位置
+    startTime: {
+      tyle: Number,
+      default: -1600
     }
   },
   mounted() {

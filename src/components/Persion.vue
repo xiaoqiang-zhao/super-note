@@ -22,11 +22,6 @@ export default {
     data: {
       type: Object,
       default: null
-    },
-    // 开始时间年份，用户确定人物在时间方向上的位置
-    startTime: {
-      tyle: Number,
-      default: -1600
     }
   },
   data() {
@@ -41,14 +36,14 @@ export default {
      * 初始化
      */
     init() {
-      const positionTop = (this.data.bornIn - this.startTime) * this.scale + 'px';
+      const topPosition = (this.data.bornIn - this.startTime) * this.scale + 'px';
       
       this.$store.commit('pushPersionPositionList', this.data);
       // 获取最后一个
       const length = this.$store.state.persionPositionList.length;
       const columnPosition = this.$store.state.persionPositionList[length - 1];
       this.style = {
-        top: positionTop,
+        top: topPosition,
         left: columnPosition.columnIndex * (100 + 10) + 'px'
       };
     },

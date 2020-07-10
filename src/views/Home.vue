@@ -10,8 +10,7 @@
           <Persion v-for="item in persions" :key="item.name" :data="item" :scale="scale"/>
         </section>
         <section class="container-item books-container" :style="persionsContainerStyle">
-          <!-- <Persion v-for="item in persions" :key="item.name" :data="item" :scale="scale"/> -->
-          <Book/>
+          <Book v-for="item in books" :key="item.name" :data="item" :scale="scale"/>
         </section>
       </section>
     </section>
@@ -31,6 +30,7 @@ import Book from '@/components/Book'
 import chinaDynasty from '@/components/Dynasty/china';
 import europeDynasty from '@/components/Dynasty/europe';
 import persions from '@/data/Persions';
+import books from '@/data/Books';
 
 export default {
   name: 'home',
@@ -52,6 +52,7 @@ export default {
         '#30A9DE'
       ],
       persions,
+      books,
       persionsContainerStyle: {}
     }
   },
