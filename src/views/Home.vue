@@ -6,8 +6,13 @@
       <Dynasty class="dynasty" :dynastyData="chinaDynasty" :scale="scale"/>
       <Dynasty class="dynasty" :dynastyData="europeDynasty" :scale="scale" :colors="colors"/>
       <section class="everything-container">
-        <Persion v-for="item in persions" :key="item.name" :data="item" :scale="scale"/>
-        <Book/>
+        <section class="container-item persions-container" :style="persionsContainerStyle">
+          <Persion v-for="item in persions" :key="item.name" :data="item" :scale="scale"/>
+        </section>
+        <section class="container-item books-container" :style="persionsContainerStyle">
+          <!-- <Persion v-for="item in persions" :key="item.name" :data="item" :scale="scale"/> -->
+          <Book/>
+        </section>
       </section>
     </section>
   </div>
@@ -46,13 +51,24 @@ export default {
         '#8CD790',
         '#30A9DE'
       ],
-      persions
+      persions,
+      persionsContainerStyle: {}
     }
   },
   computed: {
     // 缩放率
     scale() {
       return this.$store.state.scale
+    },
+    persionColumnMax() {
+      return this.$store.state.persionColumnMax;
+    }
+  },
+  watch: {
+    persionColumnMax() {
+      this.persionsContainerStyle = {
+        flex: `0 0 ${(this.persionColumnMax + 1) * 110}px`
+      }
     }
   },
   methods: {
@@ -80,8 +96,19 @@ export default {
     margin: 0 5px;
   }
   .everything-container {
-    position: relative;
+    display: flex;
     margin-left: 5px;
+    .container-item {
+      position: relative;
+      height: 100%;
+      border-right: dashed 1px #6C49B8;
+    }
+    .persions-container {
+      border-color: #6C49B8;
+    }
+    .books-container {
+      border-color: #4F86C6;
+    }
   }
 }
 </style>

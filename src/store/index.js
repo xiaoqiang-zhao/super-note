@@ -5,7 +5,8 @@ export default Vuex.createStore({
     // 缩放率
     scale: 1,
     // 历史人物列表
-    persionPositionList: []
+    persionPositionList: [],
+    persionColumnMax: 0
   },
   getters: {},
   mutations: {
@@ -49,6 +50,9 @@ export default Vuex.createStore({
         if (!a) {
           columnIndex = columnIndexArr.length;
         }
+      }
+      if (columnIndex > state.persionColumnMax) {
+        state.persionColumnMax = columnIndex;
       }
       state.persionPositionList.push({
         bottomPosition,

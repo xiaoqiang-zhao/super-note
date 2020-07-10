@@ -18,7 +18,7 @@
       <div class="everything">
         <div class="title">包罗万象</div>
         <div class="items">
-          <div class="persion">人</div>
+          <div class="persion" :style="persionsContainerStyle">人</div>
           <div class="book">书</div>
           <div class="science-technology">科技</div>
           <div class="building">建筑</div>
@@ -39,7 +39,21 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      persionsContainerStyle: {}
+    };
+  },
+  computed: {
+    persionColumnMax() {
+      return this.$store.state.persionColumnMax;
+    }
+  },
+  watch: {
+    persionColumnMax() {
+      this.persionsContainerStyle = {
+        flex: `0 0 ${(this.persionColumnMax + 1) * 110 + 5.5}px`
+      }
+    }
   },
   methods: {
     
