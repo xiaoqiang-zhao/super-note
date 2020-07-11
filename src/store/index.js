@@ -8,6 +8,7 @@ export default Vuex.createStore({
     persionPositionList: [],
     persionColumnMax: 0,
     bookPositionList: [],
+    bookColumnMax: 0,
   },
   getters: {},
   mutations: {
@@ -129,7 +130,7 @@ export default Vuex.createStore({
         }
       }
       if (columnIndex > state.persionColumnMax) {
-        state.persionColumnMax = columnIndex;
+        state.bookColumnMax = columnIndex;
       }
       state.bookPositionList.push({
         bottomPosition,

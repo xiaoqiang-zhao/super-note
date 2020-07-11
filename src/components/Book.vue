@@ -7,7 +7,7 @@
       <div class="name">{{data.name}}</div>
     </footer>
     <aside class="public-time">
-      <footer>{{data.publicTime}}</footer>
+      <header>{{data.publicTime}}</header>
     </aside>
   </article>
 </template>
@@ -41,7 +41,7 @@ export default {
       const columnPosition = this.$store.state.bookPositionList[length - 1];
       this.style = {
         top: topPosition,
-        left: columnPosition.columnIndex * (100 + 10) + 'px'
+        left: columnPosition.columnIndex * (100 + 10) + 10 + 'px'
       };
     }
   }
@@ -88,10 +88,10 @@ export default {
     width: 5px;
     background: #8CD790;
     transition: height 200ms;
-    footer {
+    header {
       position: absolute;
       left: 0px;
-      bottom: 0;
+      top: 0;
       background: #8CD790;
       width: 40px;
       text-align: center;
