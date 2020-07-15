@@ -302,6 +302,30 @@ export default {
     border: solid 1px #333;
     background: #666;
     text-align: center;
+
+    .left,
+    .right,
+    .middle {
+      @header-height: 30px;
+      display: flex;
+      flex-direction: column;
+      > header {
+        flex: 0 0 @header-height;
+        line-height: @header-height;
+        margin: 5px;
+        overflow: hidden;
+        background: #4F86C6;
+        text-align: center;
+      }
+      > section {
+        flex: 1;
+        margin: 5px;
+        padding-bottom: 5px;
+        overflow: hidden;
+        background: #4FB0C6;
+      }
+    }
+
     .left,
     .right {
       flex: 0 0 100px;
@@ -324,28 +348,6 @@ export default {
             margin-bottom: 0;
           }
         }
-      }
-    }
-    .left,
-    .right,
-    .middle {
-      @header-height: 30px;
-      display: flex;
-      flex-direction: column;
-      > header {
-        flex: 0 0 @header-height;
-        line-height: @header-height;
-        margin: 5px;
-        overflow: hidden;
-        background: #4F86C6;
-        text-align: center;
-      }
-      > section {
-        flex: 1;
-        margin: 5px;
-        padding-bottom: 5px;
-        overflow: hidden;
-        background: #4FB0C6;
       }
     }
 

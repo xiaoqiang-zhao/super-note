@@ -38,6 +38,7 @@ export default {
   @height: 46px;
   display: flex;
   flex: 0 0 @height;
+  overflow: auto;
   color: whitesmoke;
   text-align: center;
   background: yellowgreen;

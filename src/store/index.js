@@ -9,6 +9,66 @@ export default Vuex.createStore({
     persionColumnMax: 0,
     bookPositionList: [],
     bookColumnMax: 0,
+    header: {
+      left: {
+        width: 270,
+        items: [
+          {
+            name: '时间轴',
+            width: 90
+          },
+          {
+            name: '政权与朝代',
+            width: 180,
+            // 二层结构
+            children: [
+              {
+                name: '中国',
+                width: 90
+              },
+              {
+                name: '欧洲',
+                width: 90
+              }
+            ]
+          }
+        ]
+      },
+      middle: {
+        width: 900,
+        items: [
+          {
+            name: '包罗万象',
+            width: 900,
+            // 二层结构
+            children: [
+              {
+                name: '人',
+                // 5 列，110 * 5 + 10
+                width: 560
+              },
+              {
+                name: '书',
+                // 3 列，110 * 3 + 10
+                width: 340
+              }
+            ]
+          }
+      ]},
+      right: {
+        width: 180,
+        items: [
+          {
+            name: '主题和认知',
+            width: 90
+          },
+          {
+            name: '问题和方案',
+            width: 90
+          }
+        ]
+      }
+    }
   },
   getters: {},
   mutations: {

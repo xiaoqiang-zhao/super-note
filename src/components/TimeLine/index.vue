@@ -1,5 +1,8 @@
 <template>
   <article class="time-line">
+    <!-- <div class="title" @click="changeScale">
+      时间轴
+    </div> -->
     <template v-for="item in lineDotList">
       <div
         v-if="item.topDot"
@@ -63,7 +66,7 @@ export default {
     // 小节点，默认 10 年，注意小节点需要能整除大节点
     space: {
       type: Number,
-      default: 10
+      default: 50
     },
     // 大节点 hover 时是否展示 Tooltip
     isShowTooltip: {
@@ -79,7 +82,15 @@ export default {
       lineDotList: []
     }
   },
+  mounted() {},
   methods: {
+
+    /**
+     * 改变比例尺，时间与页面尺寸的比例在 1:1 和 1:10 之间切换
+     */
+    // changeScale() {
+    //   this.$store.commit('setScale', this.scale === 1 ? 10 : 1);
+    // },
 
     /**
      * 创建点线数据
