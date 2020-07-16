@@ -16,6 +16,11 @@ const routes = [
     path: '/fixed',
     name: 'fixed',
     component: () => import('../views/Fixed')
+  },
+  {
+    path: '/colors',
+    name: 'colors',
+    component: () => import('../views/Colors')
   }
 ]
 
