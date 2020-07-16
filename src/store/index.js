@@ -15,20 +15,24 @@ export default Vuex.createStore({
         items: [
           {
             name: '时间轴',
-            width: 90
+            width: 90,
+            backgroundColor: '#67D5B5'
           },
           {
             name: '政权与朝代',
             width: 180,
+            backgroundImage: 'linear-gradient(to right, #84B1ED , #1ec0ff)',
             // 二层结构
             children: [
               {
                 name: '中国',
-                width: 90
+                width: 90,
+                backgroundColor: '#84B1ED'
               },
               {
                 name: '欧洲',
-                width: 90
+                width: 90,
+                backgroundColor: '#1ec0ff'
               }
             ]
           }
@@ -40,17 +44,26 @@ export default Vuex.createStore({
           {
             name: '包罗万象',
             width: 900,
+            backgroundImage: 'linear-gradient(to right, #4F86C6 , #6c83ba, #a87ea2)',
             // 二层结构
             children: [
               {
                 name: '人',
                 // 5 列，110 * 5 + 10
-                width: 560
+                width: 560,
+                backgroundColor: '#4F86C6'
               },
               {
                 name: '书',
                 // 3 列，110 * 3 + 10
-                width: 340
+                width: 340,
+                backgroundColor: '#6c83ba'
+              },
+              {
+                name: '科技',
+                // 1 列，110 + 10
+                width: 120,
+                backgroundColor: '#a87ea2'
               }
             ]
           }
@@ -59,12 +72,9 @@ export default Vuex.createStore({
         width: 180,
         items: [
           {
-            name: '主题和认知',
-            width: 90
-          },
-          {
-            name: '问题和方案',
-            width: 90
+            name: '主题和启发',
+            width: 280,
+            backgroundColor: '#EE7785'
           }
         ]
       }

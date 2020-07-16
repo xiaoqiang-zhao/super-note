@@ -44,7 +44,7 @@ export default {
       const columnPosition = this.$store.state.persionPositionList[length - 1];
       this.style = {
         top: topPosition,
-        left: columnPosition.columnIndex * (100 + 10) + 'px'
+        left: columnPosition.columnIndex * (100 + 10) + 5 + 'px'
       };
     },
 

@@ -218,21 +218,12 @@ export default {
 <style scoped lang="less">
 // dot 直径 26px，
 .time-line {
-  @color: #595a5f;
+  @color: #67d5b5;
   display: flex;
   flex-direction: column;
   width: 50px;
   margin-right: 5px;
   font-size: 12px;
-
-  .start,
-  .end {
-    position: relative;
-    width: 14px;
-    height: 14px;
-    border: 2px solid @color;
-    border-radius: 14px;
-  }
 
   .line {
     align-self: flex-end;
@@ -240,7 +231,7 @@ export default {
     width: 3px;
     margin-top: -12.5px;
     text-align: right;
-    background: #30A9DE;
+    background: @color;
     .space {
       position: relative;
       align-self: flex-end;
@@ -248,7 +239,7 @@ export default {
       display: block;
       margin-top: 99px;
       height: 1px;
-      border-right: 5px solid #106990;
+      border-right: 5px solid @color;
       text-align: right;
       .text {
         position: absolute;
@@ -265,10 +256,10 @@ export default {
     width: 25px;
     height: 25px;
     margin: -12.5px 0 0 22px;
-    border: 1px solid #30A9DE;
+    border: 1px solid @color;
     border-radius: 13px;
     padding: 2px;
-    background-color: #30A9DE;
+    background-color: @color;
     background-clip: content-box;
     color: #fff;
     text-align: center;

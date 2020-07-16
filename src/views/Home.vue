@@ -4,10 +4,18 @@
       <HomeHeader :data="header.left"/>
       <section class="content">
         <section class="content-item content-time-line">
-          <TimeLine class="content-item"/>
+          <TimeLine/>
         </section>
-        <Dynasty class="content-item dynasty" :dynastyData="chinaDynasty" :scale="scale"/>
-        <Dynasty class="content-item dynasty" :dynastyData="europeDynasty" :scale="scale" :colors="colors"/>
+        <Dynasty
+          class="content-item dynasty"
+          :dynastyData="chinaDynasty"
+          :scale="scale"
+          :colors="chinaColors"/>
+        <Dynasty
+          class="content-item dynasty"
+          :dynastyData="europeDynasty"
+          :scale="scale"
+          :colors="europeColors"/>
       </section>
     </aside>
     <section class="middle" :style="{'flex': `1 0 ${header.middle.width}px`}">
@@ -71,11 +79,29 @@ export default {
       header: this.$store.state.header,
       chinaDynasty,
       europeDynasty,
-      colors: [
-        '#27309A',
-        '#E97F02',
-        '#8CD790',
-        '#30A9DE'
+      europeColors: [
+        '#1ec0ff',
+        '#67D5B5',
+        '#84B1ED',
+        '#4F86C6',
+        '#6c83ba',
+        '#a87ea2',
+        '#EE7785',
+        '#C89EC4',
+        '#F6B352',
+        '#F68657'
+      ],
+      chinaColors: [
+        '#84B1ED',
+        '#67D5B5',
+        '#1ec0ff',
+        '#4F86C6',
+        '#6c83ba',
+        '#a87ea2',
+        '#EE7785',
+        '#C89EC4',
+        '#F6B352',
+        '#F68657'
       ],
       persions,
       books,
@@ -94,7 +120,7 @@ export default {
   watch: {
     persionColumnMax() {
       this.persionsContainerStyle = {
-        flex: `0 0 ${(this.persionColumnMax + 1) * 110}px`
+        flex: `1 0 ${(this.persionColumnMax + 1) * 110}px`
       }
     }
   },
@@ -124,15 +150,20 @@ export default {
       display: flex;
       flex-direction: row;
       flex: 1;
-      padding: 20px 5px 200px;
+      padding: 20px 0;
       // overflow: hidden;
       box-sizing: border-box;
-      background: #4FB0C6;
       .content-item {
         position: relative;
+        padding: 0 5px 200px;
+        border-right: dashed 1px #666;
       }
       .content-time-line {
         width: 90px;
+        border: none;
+      }
+      .dynasty {
+        border: none;
       }
     }
   }

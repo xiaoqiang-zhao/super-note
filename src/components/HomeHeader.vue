@@ -3,12 +3,15 @@
     <section
       v-for="item in data.items"
       :key="item.name"
-      :style="{'flex': `0 0 ${item.width}px`}"
+      :style="{flex: '1 0 ' + item.width + 'px', background: item.backgroundColor}"
       class="item">
       <template v-if="item.children">
-        <div class="title">{{item.name}}</div>
+        <div class="title" :style="{'background-image': item.backgroundImage}">{{item.name}}</div>
         <section class="items">
-          <div class="item" v-for="child in item.children" :key="child.name">
+          <div
+            class="item"
+            v-for="child in item.children" :key="child.name"
+            :style="{'background': child.backgroundColor}">
             {{child.name}}
           </div>
         </section>
@@ -41,7 +44,6 @@ export default {
   overflow: auto;
   color: whitesmoke;
   text-align: center;
-  background: yellowgreen;
   .item {
     line-height: @height;
     .title,

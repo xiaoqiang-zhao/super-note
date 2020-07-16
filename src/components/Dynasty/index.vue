@@ -64,7 +64,6 @@ export default {
 <style lang="less" scoped>
 .dynasty {
   flex: 0 0 80px;
-  margin: 0 5px;
   color: #fff;
 }
 </style>
