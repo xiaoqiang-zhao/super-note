@@ -1,5 +1,5 @@
 <template>
-  <section class="home" ref="root">
+  <section class="home" id="home-page-root">
     <aside class="left" :style="{'flex': `0 0 ${header.left.width}px`}">
       <HomeHeader :data="header.left"/>
       <section class="content">
@@ -18,15 +18,16 @@
           :colors="europeColors"/>
       </section>
     </aside>
-    <section class="middle" :style="{'flex': `1 0 ${header.middle.width}px`}">
+    <section class="middle" :style="{'flex': `1 0 ${middleMinWidth}px`}">
       <HomeHeader :data="header.middle" :style="middleStyle"/>
       <section class="content" :style="middleStyle" ref="middleContent">
         <section class="content-item persions-container" :style="persionsContainerStyle">
           <Persion v-for="item in persions" :key="item.name" :data="item" :scale="scale"/>
         </section>
-        <section class="content-item books-container" :style="persionsContainerStyle">
+        <section class="content-item books-container" :style="booksContainerStyle">
           <Book v-for="item in books" :key="item.name" :data="item" :scale="scale"/>
         </section>
+        
       </section>
     </section>
     <aside class="right" :style="{'flex': `0 0 ${header.right.width}px`}">
@@ -105,7 +106,10 @@ export default {
       ],
       persions,
       books,
-      persionsContainerStyle: {}
+      middleMinWidth: 300,
+      middleStyle: {},
+      persionsContainerStyle: {},
+      booksContainerStyle: {}
     }
   },
   computed: {
@@ -114,15 +118,37 @@ export default {
       return this.$store.state.scale
     },
     persionColumnMax() {
+      console.log(1)
       return this.$store.state.persionColumnMax;
+    },
+    bookColumnMax() {
+      console.log(2)
+      return this.$store.state.bookColumnMax;
     }
   },
   watch: {
     persionColumnMax() {
       this.persionsContainerStyle = {
-        flex: `1 0 ${(this.persionColumnMax + 1) * 110}px`
+        flex: `1 0 ${(this.persionColumnMax + 1) * 110 + 10}px`
+      }
+    },
+    bookColumnMax() {
+      this.booksContainerStyle = {
+        flex: `1 0 ${(this.bookColumnMax + 1) * 110 + 10}px`
       }
     }
+  },
+  mounted() {
+    const leftWidth = this.$store.state.header.left.width;
+    const rightWhidth = this.$store.state.header.right.width;
+    const rootWidth = document.getElementById('home-page-root').offsetWidth;
+    const minWidth = this.middleMinWidth;
+    let middleWidth = rootWidth - leftWidth - rightWhidth;
+    
+    middleWidth = middleWidth > minWidth ? middleWidth : minWidth;
+    this.middleStyle = {
+      'max-width': `${middleWidth}px`
+    };
   },
   methods: {
 
@@ -151,11 +177,12 @@ export default {
       flex-direction: row;
       flex: 1;
       padding: 20px 0;
-      // overflow: hidden;
+      overflow: auto;
       box-sizing: border-box;
       .content-item {
         position: relative;
         padding: 0 5px 200px;
+        box-sizing: border-box;
         border-right: dashed 1px #666;
       }
       .content-time-line {

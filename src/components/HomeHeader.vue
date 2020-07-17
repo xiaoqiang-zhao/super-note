@@ -3,7 +3,7 @@
     <section
       v-for="item in data.items"
       :key="item.name"
-      :style="{flex: '1 0 ' + item.width + 'px', background: item.backgroundColor}"
+      :style="{flex: `1 0 ${item.width}px`, background: item.backgroundColor}"
       class="item">
       <template v-if="item.children">
         <div class="title" :style="{'background-image': item.backgroundImage}">{{item.name}}</div>
@@ -11,7 +11,7 @@
           <div
             class="item"
             v-for="child in item.children" :key="child.name"
-            :style="{'background': child.backgroundColor}">
+            :style="{'flex': `1 0 ${child.width}px`, 'background': child.backgroundColor}">
             {{child.name}}
           </div>
         </section>

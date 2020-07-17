@@ -7,7 +7,7 @@
       <div class="name">{{data.name}}</div>
     </footer>
     <aside class="public-time">
-      <header>{{data.publicTime}}</header>
+      <header>出版时间: {{data.publicTime}}</header>
     </aside>
   </article>
 </template>
@@ -72,6 +72,7 @@ export default {
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+      text-align: center;
       &:hover {
         white-space: normal;
       }
@@ -82,18 +83,13 @@ export default {
     visibility: hidden;
     position: absolute;
     z-index: 2;
-    right: -5px;
-    top: 0;
-    height: 100%;
-    width: 5px;
+    left: 0;
+    top: 0px;
+    width: 100%;
     background: #8CD790;
     transition: height 200ms;
     header {
-      position: absolute;
-      left: 0px;
-      top: 0;
       background: #8CD790;
-      width: 40px;
       text-align: center;
     }
   }

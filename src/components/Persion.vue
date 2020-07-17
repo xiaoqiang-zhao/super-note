@@ -86,6 +86,7 @@ export default {
     .name {
       background: #383A3F;
       color: white;
+      text-align: center;
     }
   }
 

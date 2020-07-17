@@ -63,7 +63,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .dynasty {
-  flex: 0 0 80px;
+  flex: 0 0 90px;
   color: #fff;
 }
 </style>

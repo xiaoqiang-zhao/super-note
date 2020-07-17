@@ -59,17 +59,17 @@ export default Vuex.createStore({
                 width: 340,
                 backgroundColor: '#6c83ba'
               },
-              {
-                name: '科技',
-                // 1 列，110 + 10
-                width: 120,
-                backgroundColor: '#a87ea2'
-              }
+              // {
+              //   name: '科技',
+              //   // 1 列，110 + 10
+              //   width: 120,
+              //   backgroundColor: '#a87ea2'
+              // }
             ]
           }
       ]},
       right: {
-        width: 180,
+        width: 280,
         items: [
           {
             name: '主题和启发',
@@ -199,7 +199,7 @@ export default Vuex.createStore({
           columnIndex = columnIndexArr.length;
         }
       }
-      if (columnIndex > state.persionColumnMax) {
+      if (columnIndex > state.bookColumnMax) {
         state.bookColumnMax = columnIndex;
       }
       state.bookPositionList.push({
