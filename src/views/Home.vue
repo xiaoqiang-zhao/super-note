@@ -154,12 +154,19 @@ export default {
      * 绑定滚动条事件
      */
     bindScrollEvent() {
+      const bottomSpace = 300;
       const leftContent = this.$refs.leftContent;
       const rightContent = this.$refs.rightContent;
       const middleContent = this.$refs.middleContent;
       const middleHeader = this.$refs.middleHeader.$el;
       const maxScrollLeft = middleContent.scrollWidth - middleContent.offsetWidth;
-      const maxScrollTop = middleContent.scrollHeight - middleContent.offsetHeight;
+      const maxScrollTop = middleContent.scrollHeight - middleContent.offsetHeight + bottomSpace;
+      // 给每一个 contentItem 指定一个较大的高度，防止 contentItem 高度不同引起的滚动条高度不一致
+      const scrollHeight = middleContent.scrollHeight;
+      document.getElementsByClassName('content-item').forEach(element => {
+        element.style.height = `${scrollHeight + bottomSpace}px`;
+      });
+      
       this.$refs.homePageRoot.addEventListener('wheel', event => {
         // 横向滚动，中间部分的头部和内容滚动
         if (event.wheelDeltaX) {
@@ -203,7 +210,7 @@ export default {
       box-sizing: border-box;
       .content-item {
         position: relative;
-        padding: 0 5px 200px;
+        padding: 0 5px;
         box-sizing: border-box;
         border-right: dashed 1px #666;
       }
