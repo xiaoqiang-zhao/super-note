@@ -198,7 +198,7 @@ export default {
         middleContent.scrollTo(this.scrollLeft - 1, this.scrollTop);
       }
       // 纵向滚动，左中右的内容区
-      if (event.wheelDeltaX) {
+      if (event.wheelDeltaY) {
         let scrollTop = this.scrollTop - (event.wheelDeltaY / 3);
         this.scrollTop = scrollTop > maxScrollTop ? maxScrollTop : scrollTop;
         middleContent.scrollTo(this.scrollLeft, this.scrollTop - 1);

@@ -1,8 +1,8 @@
 <template>
-  <section class="home" id="home-page-root">
+  <section class="home" ref="homePageRoot">
     <aside class="left" :style="{'flex': `0 0 ${header.left.width}px`}">
       <HomeHeader :data="header.left"/>
-      <section class="content">
+      <section class="content" ref="leftContent">
         <section class="content-item content-time-line">
           <TimeLine/>
         </section>
@@ -19,7 +19,7 @@
       </section>
     </aside>
     <section class="middle" :style="{'flex': `1 0 ${middleMinWidth}px`}">
-      <HomeHeader :data="header.middle" :style="middleStyle"/>
+      <HomeHeader :data="header.middle" :style="middleStyle" ref="middleHeader"/>
       <section class="content" :style="middleStyle" ref="middleContent">
         <section class="content-item persions-container" :style="persionsContainerStyle">
           <Persion v-for="item in persions" :key="item.name" :data="item" :scale="scale"/>
@@ -32,7 +32,7 @@
     </section>
     <aside class="right" :style="{'flex': `0 0 ${header.right.width}px`}">
       <HomeHeader :data="header.right"/>
-      <section class="content">
+      <section class="content" ref="rightContent">
       </section>
     </aside>
   </section>
@@ -62,19 +62,6 @@ export default {
     Persion,
     Book
   },
-  // computed: {
-  //   middleStyle() {
-  //     let max = 2000;
-  //     if (this.$refs.root) {
-  //       debugger
-  //       max = this.$refs.root.offsetWidth - this.header.left.width - this.header.right.width;
-  //       // this.$refs.root.offsetWidth
-  //     }
-  //     return {
-  //       'max-width': `${max}px`
-  //     };
-  //   }
-  // },
   data() {
     return {
       header: this.$store.state.header,
@@ -109,7 +96,9 @@ export default {
       middleMinWidth: 300,
       middleStyle: {},
       persionsContainerStyle: {},
-      booksContainerStyle: {}
+      booksContainerStyle: {},
+      scrollLeft: 0,
+      scrollTop: 0
     }
   },
   computed: {
@@ -139,7 +128,7 @@ export default {
   mounted() {
     const leftWidth = this.$store.state.header.left.width;
     const rightWhidth = this.$store.state.header.right.width;
-    const rootWidth = document.getElementById('home-page-root').offsetWidth;
+    const rootWidth = this.$refs.homePageRoot.offsetWidth;
     const minWidth = this.middleMinWidth;
     let middleWidth = rootWidth - leftWidth - rightWhidth;
     
@@ -147,7 +136,11 @@ export default {
     this.middleStyle = {
       'max-width': `${middleWidth}px`
     };
+    this.$nextTick(() => {
+      this.bindScrollEvent();
+    });
   },
+
   methods: {
 
     /**
@@ -155,6 +148,36 @@ export default {
      */
     changeScale(value) {
       this.scale = value;
+    },
+
+    /**
+     * 绑定滚动条事件
+     */
+    bindScrollEvent() {
+      const leftContent = this.$refs.leftContent;
+      const rightContent = this.$refs.rightContent;
+      const middleContent = this.$refs.middleContent;
+      const middleHeader = this.$refs.middleHeader.$el;
+      const maxScrollLeft = middleContent.scrollWidth - middleContent.offsetWidth;
+      const maxScrollTop = middleContent.scrollHeight - middleContent.offsetHeight;
+      this.$refs.homePageRoot.addEventListener('wheel', event => {
+        // 横向滚动，中间部分的头部和内容滚动
+        if (event.wheelDeltaX) {
+          let scrollLeft = this.scrollLeft - (event.wheelDeltaX / 3)
+          this.scrollLeft = scrollLeft > maxScrollLeft ? maxScrollLeft : scrollLeft;
+          middleHeader.scrollTo(this.scrollLeft, 0);
+          middleContent.scrollTo(this.scrollLeft - 1, this.scrollTop);
+        }
+        // 纵向滚动，左中右的内容区
+        if (event.wheelDeltaY) {
+          let scrollTop = this.scrollTop - (event.wheelDeltaY / 3);
+          this.scrollTop = scrollTop > maxScrollTop ? maxScrollTop : scrollTop;
+          middleContent.scrollTo(this.scrollLeft, this.scrollTop - 1);
+          leftContent.scrollTo(this.scrollLeft, this.scrollTop - 1);
+          rightContent.scrollTo(this.scrollLeft, this.scrollTop - 1);
+        }
+        event.preventDefault();
+      });
     }
   }
 }
