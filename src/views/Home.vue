@@ -118,11 +118,9 @@ export default {
       return this.$store.state.scale
     },
     persionColumnMax() {
-      console.log(1)
       return this.$store.state.persionColumnMax;
     },
     bookColumnMax() {
-      console.log(2)
       return this.$store.state.bookColumnMax;
     }
   },
@@ -165,6 +163,7 @@ export default {
 <style lang="less" scoped>
 .home {
   display: flex;
+  height: 100vh;
 
   .left,
   .right,

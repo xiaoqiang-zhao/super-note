@@ -83,7 +83,6 @@ export default {
     ];
     this.createGridMatrix(jumpColors, gridMatrix2);
     
-    // console.log(matrix);
     return {
       colors: [
         1,
