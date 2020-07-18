@@ -33,6 +33,9 @@
     <aside class="right" :class="{'shadow': rightShadow}" :style="{'flex': `0 0 ${header.right.width}px`}">
       <HomeHeader :data="header.right" :class="{'shadow': headerShadow}"/>
       <section class="content" ref="rightContent">
+        <section class="content-item">
+          <!-- <div v-for="item in 100" :key="`aaa${item}`">{{item}}</div> -->
+        </section>
       </section>
     </aside>
   </section>
@@ -217,7 +220,7 @@ export default {
       flex-direction: row;
       flex: 1;
       padding: 20px 0;
-      overflow: auto;
+      overflow: hidden;
       box-sizing: border-box;
       .content-item {
         position: relative;
@@ -233,6 +236,17 @@ export default {
         border: none;
       }
     }
+  }
+
+  .right .content {
+    overflow: auto;
+    .content-item {
+      border: none;
+    }
+  }
+
+  .middle .content {
+    overflow-x: auto;
   }
 
   .shadow {

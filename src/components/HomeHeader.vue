@@ -41,7 +41,7 @@ export default {
   @height: 46px;
   display: flex;
   flex: 0 0 @height;
-  overflow: auto;
+  overflow: hidden;
   color: whitesmoke;
   text-align: center;
   .item {
