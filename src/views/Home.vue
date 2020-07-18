@@ -1,7 +1,7 @@
 <template>
   <section class="home" ref="homePageRoot">
-    <aside class="left shadow" :style="{'flex': `0 0 ${header.left.width}px`}">
-      <HomeHeader :data="header.left"/>
+    <aside class="left" :class="{'shadow': leftShadow}" :style="{'flex': `0 0 ${header.left.width}px`}">
+      <HomeHeader :data="header.left" :class="{'shadow': headerShadow}"/>
       <section class="content" ref="leftContent">
         <section class="content-item content-time-line">
           <TimeLine/>
@@ -19,7 +19,7 @@
       </section>
     </aside>
     <section class="middle" :style="{'flex': `1 0 ${middleMinWidth}px`}">
-      <HomeHeader :data="header.middle" :style="middleStyle" ref="middleHeader"/>
+      <HomeHeader :data="header.middle" :style="middleStyle" ref="middleHeader" :class="{'shadow': headerShadow}"/>
       <section class="content" :style="middleStyle" ref="middleContent">
         <section class="content-item persions-container" :style="persionsContainerStyle">
           <Persion v-for="item in persions" :key="item.name" :data="item" :scale="scale"/>
@@ -30,8 +30,8 @@
         
       </section>
     </section>
-    <aside class="right shadow" :style="{'flex': `0 0 ${header.right.width}px`}">
-      <HomeHeader :data="header.right"/>
+    <aside class="right" :class="{'shadow': rightShadow}" :style="{'flex': `0 0 ${header.right.width}px`}">
+      <HomeHeader :data="header.right" :class="{'shadow': headerShadow}"/>
       <section class="content" ref="rightContent">
       </section>
     </aside>
@@ -98,7 +98,10 @@ export default {
       persionsContainerStyle: {},
       booksContainerStyle: {},
       scrollLeft: 0,
-      scrollTop: 0
+      scrollTop: 0,
+      leftShadow: false,
+      rightShadow: false,
+      headerShadow: false
     }
   },
   computed: {
@@ -161,6 +164,10 @@ export default {
       const middleHeader = this.$refs.middleHeader.$el;
       const maxScrollLeft = middleContent.scrollWidth - middleContent.offsetWidth;
       const maxScrollTop = middleContent.scrollHeight - middleContent.offsetHeight + bottomSpace;
+
+      if (maxScrollLeft > 0) {
+        this.rightShadow = true;
+      }
       // 给每一个 contentItem 指定一个较大的高度，防止 contentItem 高度不同引起的滚动条高度不一致
       const scrollHeight = middleContent.scrollHeight;
       document.getElementsByClassName('content-item').forEach(element => {
@@ -174,6 +181,9 @@ export default {
           this.scrollLeft = scrollLeft > maxScrollLeft ? maxScrollLeft : scrollLeft;
           middleHeader.scrollTo(this.scrollLeft, 0);
           middleContent.scrollTo(this.scrollLeft - 1, this.scrollTop);
+          
+          this.leftShadow = this.scrollLeft > 0;
+          this.rightShadow = this.scrollLeft < maxScrollLeft;
         }
         // 纵向滚动，左中右的内容区
         if (event.wheelDeltaY) {
@@ -182,6 +192,7 @@ export default {
           middleContent.scrollTo(this.scrollLeft, this.scrollTop - 1);
           leftContent.scrollTo(this.scrollLeft, this.scrollTop - 1);
           rightContent.scrollTo(this.scrollLeft, this.scrollTop - 1);
+          this.headerShadow = this.scrollTop > 0;
         }
         event.preventDefault();
       });
