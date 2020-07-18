@@ -1,6 +1,6 @@
 <template>
   <section class="home" ref="homePageRoot">
-    <aside class="left" :style="{'flex': `0 0 ${header.left.width}px`}">
+    <aside class="left shadow" :style="{'flex': `0 0 ${header.left.width}px`}">
       <HomeHeader :data="header.left"/>
       <section class="content" ref="leftContent">
         <section class="content-item content-time-line">
@@ -30,7 +30,7 @@
         
       </section>
     </section>
-    <aside class="right" :style="{'flex': `0 0 ${header.right.width}px`}">
+    <aside class="right shadow" :style="{'flex': `0 0 ${header.right.width}px`}">
       <HomeHeader :data="header.right"/>
       <section class="content" ref="rightContent">
       </section>
@@ -222,6 +222,10 @@ export default {
         border: none;
       }
     }
+  }
+
+  .shadow {
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .3);
   }
 }
 </style>
