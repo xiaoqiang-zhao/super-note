@@ -9,6 +9,8 @@ export default Vuex.createStore({
     persionColumnMax: 0,
     bookPositionList: [],
     bookColumnMax: 0,
+    technologyPositionList: [],
+    technologyColumnMax: 0,
     header: {
       left: {
         width: 270,
@@ -39,11 +41,11 @@ export default Vuex.createStore({
         ]
       },
       middle: {
-        width: 900,
+        width: 1020,
         items: [
           {
             name: '包罗万象',
-            width: 900,
+            width: 1020,
             backgroundImage: 'linear-gradient(to right, #4F86C6 , #6c83ba, #a87ea2)',
             // 二层结构
             children: [
@@ -59,12 +61,12 @@ export default Vuex.createStore({
                 width: 340,
                 backgroundColor: '#6c83ba'
               },
-              // {
-              //   name: '科技',
-              //   // 1 列，110 + 10
-              //   width: 120,
-              //   backgroundColor: '#a87ea2'
-              // }
+              {
+                name: '科技',
+                // 1 列，110 + 10
+                width: 120,
+                backgroundColor: '#a87ea2'
+              }
             ]
           }
       ]},
@@ -206,6 +208,18 @@ export default Vuex.createStore({
         bottomPosition,
         columnIndex
       });
+    },
+
+    /**
+     * 推入科技成果占位信息
+     *
+     * @param {Object}} state 
+     * @param {Object} technologyData 科技数据
+     */
+    pushTechnologyPositionList(state, technologyData) {
+      // TODO 抽象重构
+      state.technologyPositionList.push(technologyData);
+      state.technologyColumnMax = 1;
     }
   },
   actions: {

@@ -27,7 +27,9 @@
         <section class="content-item books-container" :style="booksContainerStyle">
           <Book v-for="item in books" :key="item.name" :data="item" :scale="scale"/>
         </section>
-        
+        <section class="content-item technology-container" :style="technologyContainerStyle">
+          <Technology v-for="item in technology" :key="item.name" :data="item" :scale="scale"/>
+        </section>
       </section>
     </section>
     <aside class="right" :class="{'shadow': rightShadow}" :style="{'flex': `0 0 ${header.right.width}px`}">
@@ -50,11 +52,13 @@ import TimeLine from '@/components/TimeLine'
 import Dynasty from '@/components/Dynasty'
 import Persion from '@/components/Persion'
 import Book from '@/components/Book'
+import Technology from '@/components/Technology'
 
 import chinaDynasty from '@/components/Dynasty/china';
 import europeDynasty from '@/components/Dynasty/europe';
 import persions from '@/data/Persions';
 import books from '@/data/Books';
+import technology from '@/data/Technology';
 
 export default {
   name: 'home',
@@ -63,7 +67,8 @@ export default {
     TimeLine,
     Dynasty,
     Persion,
-    Book
+    Book,
+    Technology
   },
   data() {
     return {
@@ -96,10 +101,12 @@ export default {
       ],
       persions,
       books,
+      technology,
       middleMinWidth: 300,
       middleStyle: {},
       persionsContainerStyle: {},
       booksContainerStyle: {},
+      technologyContainerStyle: {},
       scrollLeft: 0,
       scrollTop: 0,
       leftShadow: false,
@@ -117,6 +124,9 @@ export default {
     },
     bookColumnMax() {
       return this.$store.state.bookColumnMax;
+    },
+    technologyColumnMax() {
+      return this.$store.state.technologyColumnMax;
     }
   },
   watch: {
@@ -128,6 +138,11 @@ export default {
     bookColumnMax() {
       this.booksContainerStyle = {
         flex: `1 0 ${(this.bookColumnMax + 1) * 110 + 10}px`
+      }
+    },
+    technologyColumnMax() {
+      this.technologyContainerStyle = {
+        flex: `1 0 ${this.technologyColumnMax * 110 + 10}px`
       }
     }
   },
