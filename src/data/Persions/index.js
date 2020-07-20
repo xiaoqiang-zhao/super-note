@@ -171,4 +171,17 @@ export default [
     diedIn: 1952,
     portrait: '/static/persions-portrait/Montessori.jpg'
   },
+  {
+    name: '鲁迅',
+    bornIn: 1881,
+    diedIn: 1936,
+    portrait: '/static/persions-portrait/鲁迅.jpg'
+  },
+  {
+    name: '张爱玲',
+    bornIn: 1920,
+    diedIn: 1995,
+    portrait: '/static/persions-portrait/张爱玲.jpg',
+    pro: '写都市中人性的高手，一百年后读她的作品依然不过时。'
+  },
 ];
