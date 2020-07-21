@@ -160,6 +160,14 @@ export default [
     portrait: '/static/persions-portrait/Beethoven.jpg'
   },
   {
+    name: '托尔斯泰',
+    bornIn: 1828,
+    diedIn: 1910,
+    portrait: '/static/persions-portrait/托尔斯泰.jpg',
+    pro: `为什么富人要捐出大量财富，甚至裸捐？为什么美国的贫富差距远比欧洲大得多，仇富并不严重？托尔斯泰是打开西方窥探西方财富观的一扇窗。
+          《战争与和平》 《安娜-卡列尼娜》 《复活》`
+  },
+  {
     name: '洛克菲勒',
     bornIn: 1839,
     diedIn: 1937,
@@ -182,6 +190,7 @@ export default [
     bornIn: 1920,
     diedIn: 1995,
     portrait: '/static/persions-portrait/张爱玲.jpg',
-    pro: '写都市中人性的高手，一百年后读她的作品依然不过时。'
+    pro: `少年天才和大器晚成同时出现在一个人身上，而并不矛盾，这便是张爱玲。
+          写都市中人性的高手，一百年后读她的作品依然不过时。`
   },
 ];
