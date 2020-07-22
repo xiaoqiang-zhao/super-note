@@ -12,5 +12,10 @@ export default [
     name: '古腾堡印刷机',
     time: 1439,
     cover: '/static/technology-cover/古腾堡印刷机.jpg'
+  },
+  {
+    name: '照相机',
+    time: 1839,
+    cover: '/static/technology-cover/照相机.png'
   }
 ];
