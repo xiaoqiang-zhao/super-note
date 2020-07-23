@@ -1,14 +1,58 @@
 import Vuex from 'vuex'
 
+const moddleData = [
+  {
+    name: 'persion',
+    title: '人',
+    dataList: []
+  },
+  {
+    name: 'book',
+    title: '书',
+    dataList: []
+  },
+  {
+    name: 'technology',
+    title: '科技',
+    dataList: []
+  },
+  // {
+  //   name: 'art',
+  //   title: '艺术',
+  //   dataList: []
+  // },
+  // {
+  //   name: 'building',
+  //   title: '建筑',
+  //   dataList: []
+  // },
+  // {
+  //   name: 'incident',
+  //   title: '事件',
+  //   dataList: []
+  // }
+]
+
+// 添加通用字段
+moddleData.forEach(item => {
+  // 防碰撞算法数据容器
+  item.positionList = []
+  // 最大列数编号，从 1 开始
+  item.maxColumnIndex = 1
+})
+
 export default Vuex.createStore({
   state: {
     // 缩放率
     scale: 1,
+    moddleData,
     // 历史人物列表
     persionPositionList: [],
     persionColumnMax: 0,
+    // 书
     bookPositionList: [],
     bookColumnMax: 0,
+    // 科技
     technologyPositionList: [],
     technologyColumnMax: 0,
     header: {
@@ -51,8 +95,8 @@ export default Vuex.createStore({
             children: [
               {
                 name: '人',
-                // 5 列，110 * 5 + 10
-                width: 560,
+                // 6 列，110 * 6 + 10
+                width: 670,
                 backgroundColor: '#4F86C6'
               },
               {
@@ -220,6 +264,13 @@ export default Vuex.createStore({
       // TODO 抽象重构
       state.technologyPositionList.push(technologyData);
       state.technologyColumnMax = 1;
+    },
+
+    /**
+     * 初始化中间部分的布局数据
+     */
+    initMiddleLayoutData() {
+
     }
   },
   actions: {
