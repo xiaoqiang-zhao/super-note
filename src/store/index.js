@@ -7,31 +7,37 @@ const middleData = [
   {
     name: 'persion',
     title: '人',
+    topKey: 'bornIn',
     dataList: persions
   },
   {
     name: 'book',
     title: '书',
+    topKey: 'publicTime',
     dataList: books
   },
   {
     name: 'technology',
     title: '科技',
+    topKey: 'time',
     dataList: technology
   },
   // {
   //   name: 'art',
   //   title: '艺术',
+  //   topKey: 'time',
   //   dataList: []
   // },
   // {
   //   name: 'building',
   //   title: '建筑',
+  //   topKey: 'time',
   //   dataList: []
   // },
   // {
   //   name: 'incident',
   //   title: '事件',
+  //   topKey: 'startTime',
   //   dataList: []
   // }
 ]
@@ -40,8 +46,8 @@ const middleData = [
 middleData.forEach(item => {
   // 防碰撞算法数据容器
   item.positionList = []
-  // 最大列数编号，从 1 开始
-  item.maxColumnIndex = 1
+  // 最大列数编号，从 0 开始
+  item.maxColumnIndex = 0
 })
 
 export default Vuex.createStore({
@@ -276,7 +282,46 @@ export default Vuex.createStore({
      */
     initMiddleLayoutData(state) {
       state.middleData.forEach(item => {
-        console.log(item)
+        // 清空
+        item.positionList = []
+        item.maxColumnIndex = 0
+
+        // 计算位置和尺寸
+        item.dataList.forEach(data => {
+          const columnIndexArr = [];
+          const topPosition = data[item.topKey] * state.scale;
+          const bottomPosition = topPosition + 141 + 10;
+          let lastIndex = item.positionList.length;
+          let columnIndex = 0;
+
+          // 第一个元素直接跳过，无需走计算逻辑
+          if (lastIndex--) {
+            // 获取水平方向上有重叠的元素的 columnIndex 数组
+            let positionItem = item.positionList[lastIndex];
+            while(positionItem && positionItem.bottomPosition >= topPosition) {
+              columnIndexArr.push(positionItem.columnIndex);
+              positionItem = state.bookPositionList[--lastIndex];
+            }
+            columnIndexArr.sort();
+            const hasSpace = columnIndexArr.some((item, index) => {
+              if (item !== index) {
+                columnIndex = index;
+                return true;
+              }
+            });
+            if (!hasSpace) {
+              columnIndex = columnIndexArr.length;
+            }
+          }
+          if (columnIndex > item.maxColumnIndex) {
+            item.maxColumnIndex = columnIndex;
+          }
+          item.positionList.push({
+            name: data.name,
+            bottomPosition,
+            columnIndex
+          });
+        });
       });
     }
   },
