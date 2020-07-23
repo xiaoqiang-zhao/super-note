@@ -160,6 +160,8 @@ export default {
     this.$nextTick(() => {
       this.bindScrollEvent();
     });
+
+    this.$store.commit('initMiddleLayoutData');
   },
 
   methods: {

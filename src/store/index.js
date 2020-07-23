@@ -1,20 +1,23 @@
 import Vuex from 'vuex'
 
-const moddleData = [
+import persions from '@/data/Persions'
+import books from '@/data/Books'
+import technology from '@/data/Technology'
+const middleData = [
   {
     name: 'persion',
     title: '人',
-    dataList: []
+    dataList: persions
   },
   {
     name: 'book',
     title: '书',
-    dataList: []
+    dataList: books
   },
   {
     name: 'technology',
     title: '科技',
-    dataList: []
+    dataList: technology
   },
   // {
   //   name: 'art',
@@ -34,7 +37,7 @@ const moddleData = [
 ]
 
 // 添加通用字段
-moddleData.forEach(item => {
+middleData.forEach(item => {
   // 防碰撞算法数据容器
   item.positionList = []
   // 最大列数编号，从 1 开始
@@ -45,7 +48,7 @@ export default Vuex.createStore({
   state: {
     // 缩放率
     scale: 1,
-    moddleData,
+    middleData,
     // 历史人物列表
     persionPositionList: [],
     persionColumnMax: 0,
@@ -268,9 +271,13 @@ export default Vuex.createStore({
 
     /**
      * 初始化中间部分的布局数据
+     * 
+     * @param {Object}} state
      */
-    initMiddleLayoutData() {
-
+    initMiddleLayoutData(state) {
+      state.middleData.forEach(item => {
+        console.log(item)
+      });
     }
   },
   actions: {
