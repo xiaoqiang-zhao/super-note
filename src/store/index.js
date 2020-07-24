@@ -52,6 +52,8 @@ middleData.forEach(item => {
 
 export default Vuex.createStore({
   state: {
+    // 开始时间
+    startTime: -1660,
     // 缩放率
     scale: 1,
     middleData,
@@ -316,10 +318,16 @@ export default Vuex.createStore({
           if (columnIndex > item.maxColumnIndex) {
             item.maxColumnIndex = columnIndex;
           }
+
+          const positionStyle = {
+            top: (data.bornIn - state.startTime) * state.scale + 'px',
+            left: columnIndex * (100 + 10) + 10 + 'px'
+          }
           item.positionList.push({
             name: data.name,
             bottomPosition,
-            columnIndex
+            columnIndex,
+            positionStyle
           });
         });
       });
