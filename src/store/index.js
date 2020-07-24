@@ -1,54 +1,6 @@
 import Vuex from 'vuex'
 
-import persions from '@/data/Persions'
-import books from '@/data/Books'
-import technology from '@/data/Technology'
-const middleData = [
-  {
-    name: 'persion',
-    title: '人',
-    topKey: 'bornIn',
-    dataList: persions
-  },
-  {
-    name: 'book',
-    title: '书',
-    topKey: 'publicTime',
-    dataList: books
-  },
-  {
-    name: 'technology',
-    title: '科技',
-    topKey: 'time',
-    dataList: technology
-  },
-  // {
-  //   name: 'art',
-  //   title: '艺术',
-  //   topKey: 'time',
-  //   dataList: []
-  // },
-  // {
-  //   name: 'building',
-  //   title: '建筑',
-  //   topKey: 'time',
-  //   dataList: []
-  // },
-  // {
-  //   name: 'incident',
-  //   title: '事件',
-  //   topKey: 'startTime',
-  //   dataList: []
-  // }
-]
-
-// 添加通用字段
-middleData.forEach(item => {
-  // 防碰撞算法数据容器
-  item.positionList = []
-  // 最大列数编号，从 0 开始
-  item.maxColumnIndex = 0
-})
+import middleData from './middleData'
 
 export default Vuex.createStore({
   state: {
@@ -154,9 +106,9 @@ export default Vuex.createStore({
       // action 一般用于异步数据同步
       // 
       // 另一种在一个 mutation 方法中改变两个 state 属性
-      state.persionPositionList = [];
-      state.bookPositionList = [];
-      state.scale = value;
+      state.persionPositionList = []
+      state.bookPositionList = []
+      state.scale = value
     },
 
     /**
@@ -174,38 +126,38 @@ export default Vuex.createStore({
       //   portrait: '/static/persions-portrait/kongzi.jpeg'
       // }
 
-      const columnIndexArr = [];
-      const topPosition = persionData.bornIn * state.scale;
-      const bottomPosition = persionData.bornIn * state.scale + 141 + 10;
-      let lastIndex = state.persionPositionList.length;
-      let columnIndex = 0;
+      const columnIndexArr = []
+      const topPosition = persionData.bornIn * state.scale
+      const bottomPosition = persionData.bornIn * state.scale + 141 + 10
+      let lastIndex = state.persionPositionList.length
+      let columnIndex = 0
 
       // 第一个元素直接跳过，无需走计算逻辑
       if (lastIndex--) {
         // 获取水平方向上有重叠的元素的 columnIndex 数组
-        let item = state.persionPositionList[lastIndex];
+        let item = state.persionPositionList[lastIndex]
         while(item && item.bottomPosition >= topPosition) {
-          columnIndexArr.push(item.columnIndex);
-          item = state.persionPositionList[--lastIndex];
+          columnIndexArr.push(item.columnIndex)
+          item = state.persionPositionList[--lastIndex]
         }
-        columnIndexArr.sort();
+        columnIndexArr.sort()
         const hasSpace = columnIndexArr.some((item, index) => {
           if (item !== index) {
-            columnIndex = index;
-            return true;
+            columnIndex = index
+            return true
           }
-        });
+        })
         if (!hasSpace) {
-          columnIndex = columnIndexArr.length;
+          columnIndex = columnIndexArr.length
         }
       }
       if (columnIndex > state.persionColumnMax) {
-        state.persionColumnMax = columnIndex;
+        state.persionColumnMax = columnIndex
       }
       state.persionPositionList.push({
         bottomPosition,
         columnIndex
-      });
+      })
     },
 
     /**
@@ -214,7 +166,7 @@ export default Vuex.createStore({
      * @param {Object}} state 
      */
     clearPersionPositionList(state) {
-      state.persionPositionList = [];
+      state.persionPositionList = []
     },
 
     /**
@@ -231,38 +183,38 @@ export default Vuex.createStore({
       //   cover: '/static/book-cover/蒙台梭利早期教育法.png'
       // }
 
-      const columnIndexArr = [];
-      const topPosition = bookData.publicTime * state.scale;
-      const bottomPosition = bookData.publicTime * state.scale + 141 + 10;
-      let lastIndex = state.bookPositionList.length;
-      let columnIndex = 0;
+      const columnIndexArr = []
+      const topPosition = bookData.publicTime * state.scale
+      const bottomPosition = bookData.publicTime * state.scale + 141 + 10
+      let lastIndex = state.bookPositionList.length
+      let columnIndex = 0
 
       // 第一个元素直接跳过，无需走计算逻辑
       if (lastIndex--) {
         // 获取水平方向上有重叠的元素的 columnIndex 数组
-        let item = state.bookPositionList[lastIndex];
+        let item = state.bookPositionList[lastIndex]
         while(item && item.bottomPosition >= topPosition) {
-          columnIndexArr.push(item.columnIndex);
-          item = state.bookPositionList[--lastIndex];
+          columnIndexArr.push(item.columnIndex)
+          item = state.bookPositionList[--lastIndex]
         }
-        columnIndexArr.sort();
+        columnIndexArr.sort()
         const hasSpace = columnIndexArr.some((item, index) => {
           if (item !== index) {
-            columnIndex = index;
-            return true;
+            columnIndex = index
+            return true
           }
-        });
+        })
         if (!hasSpace) {
-          columnIndex = columnIndexArr.length;
+          columnIndex = columnIndexArr.length
         }
       }
       if (columnIndex > state.bookColumnMax) {
-        state.bookColumnMax = columnIndex;
+        state.bookColumnMax = columnIndex
       }
       state.bookPositionList.push({
         bottomPosition,
         columnIndex
-      });
+      })
     },
 
     /**
@@ -273,8 +225,8 @@ export default Vuex.createStore({
      */
     pushTechnologyPositionList(state, technologyData) {
       // TODO 抽象重构
-      state.technologyPositionList.push(technologyData);
-      state.technologyColumnMax = 1;
+      state.technologyPositionList.push(technologyData)
+      state.technologyColumnMax = 1
     },
 
     /**
@@ -283,54 +235,62 @@ export default Vuex.createStore({
      * @param {Object}} state
      */
     initMiddleLayoutData(state) {
-      state.middleData.forEach(item => {
-        // 清空
-        item.positionList = []
-        item.maxColumnIndex = 0
+      state.middleData = middleData.init(state)
+      // state.middleData.forEach(item => {
+      //   // 清空
+      //   item.positionList = []
+      //   item.maxColumnIndex = 0
 
-        // 计算位置和尺寸
-        item.dataList.forEach(data => {
-          const columnIndexArr = [];
-          const topPosition = data[item.topKey] * state.scale;
-          const bottomPosition = topPosition + 141 + 10;
-          let lastIndex = item.positionList.length;
-          let columnIndex = 0;
+      //   // 计算位置和尺寸
+      //   item.dataList.forEach((data, index) => {
+      //     const columnIndexArr = []
+      //     const topPosition = data[item.topKey] * state.scale
+      //     const bottomPosition = topPosition + 141 + 10
+      //     let lastIndex = item.positionList.length
+      //     let columnIndex = 0
 
-          // 第一个元素直接跳过，无需走计算逻辑
-          if (lastIndex--) {
-            // 获取水平方向上有重叠的元素的 columnIndex 数组
-            let positionItem = item.positionList[lastIndex];
-            while(positionItem && positionItem.bottomPosition >= topPosition) {
-              columnIndexArr.push(positionItem.columnIndex);
-              positionItem = state.bookPositionList[--lastIndex];
-            }
-            columnIndexArr.sort();
-            const hasSpace = columnIndexArr.some((item, index) => {
-              if (item !== index) {
-                columnIndex = index;
-                return true;
-              }
-            });
-            if (!hasSpace) {
-              columnIndex = columnIndexArr.length;
-            }
-          }
-          if (columnIndex > item.maxColumnIndex) {
-            item.maxColumnIndex = columnIndex;
-          }
+      //     data.index = index;
 
-          const positionStyle = {
-            top: (data.bornIn - state.startTime) * state.scale + 'px',
-            left: columnIndex * (100 + 10) + 10 + 'px'
-          }
-          item.positionList.push({
-            name: data.name,
-            bottomPosition,
-            columnIndex,
-            positionStyle
-          });
-        });
-      });
+      //     // 第一个元素直接跳过，无需走计算逻辑
+      //     if (lastIndex--) {
+      //       // 获取水平方向上有重叠的元素的 columnIndex 数组
+      //       let positionItem = item.positionList[lastIndex]
+      //       while(positionItem && positionItem.bottomPosition >= topPosition) {
+      //         columnIndexArr.push(positionItem.columnIndex)
+      //         positionItem = state.bookPositionList[--lastIndex]
+      //       }
+      //       columnIndexArr.sort()
+      //       const hasSpace = columnIndexArr.some((item, index) => {
+      //         if (item !== index) {
+      //           columnIndex = index
+      //           return true
+      //         }
+      //       })
+      //       if (!hasSpace) {
+      //         columnIndex = columnIndexArr.length
+      //       }
+      //     }
+      //     if (columnIndex > item.maxColumnIndex) {
+      //       item.maxColumnIndex = columnIndex
+      //     }
+
+      //     const positionStyle = {
+      //       top: (data.bornIn - state.startTime) * state.scale + 'px',
+      //       left: columnIndex * (100 + 10) + 10 + 'px'
+      //     }
+      //     item.positionList.push({
+      //       name: data.name,
+      //       bottomPosition,
+      //       columnIndex,
+      //       positionStyle
+      //     })
+      //   })
+
+      //   // 容器样式
+      //   item.containerStyle = {
+      //     flex: `1 0 ${(item.maxColumnIndex + 1) * 110 + 10}px`
+      //   }
+      // })
     }
   },
   actions: {
@@ -341,10 +301,10 @@ export default Vuex.createStore({
      * @param {Number} value 分辨率
      */
     // changeScale(context, value) {
-    //   context.commit('clearPersionPositionList');
-    //   context.commit('setScale', value);
+    //   context.commit('clearPersionPositionList')
+    //   context.commit('setScale', value)
     // }
   },
   modules: {
   }
-});
+})

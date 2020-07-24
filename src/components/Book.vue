@@ -1,5 +1,5 @@
 <template>
-<article class="book" :style="style">
+<article class="book" :style="data.positionData.positionStyle">
     <div class="img-container">
       <img :src="data.cover" alt="封面">
     </div>
@@ -33,16 +33,6 @@ export default {
      * 初始化
      */
     init() {
-      const topPosition = (this.data.publicTime - this.startTime) * this.scale + 'px';
-      
-      this.$store.commit('pushBookPositionList', this.data);
-      // 获取最后一个
-      const length = this.$store.state.bookPositionList.length;
-      const columnPosition = this.$store.state.bookPositionList[length - 1];
-      this.style = {
-        top: topPosition,
-        left: columnPosition.columnIndex * (100 + 10) + 10 + 'px'
-      };
     }
   }
 }

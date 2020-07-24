@@ -18,11 +18,11 @@ export default {
     }
   },
   mounted() {
-    this.init();
+    this.init()
   },
   watch: {
     scale() {
-      this.init();
+      this.init()
     }
   },
   methods: {

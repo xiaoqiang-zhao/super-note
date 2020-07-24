@@ -1,5 +1,5 @@
 <template>
-  <article class="persion" :style="style" @click="lifeTime">
+  <article class="persion" :style="data.positionData.positionStyle" @click="lifeTime">
     <div class="img-container">
       <img :src="data.portrait" alt="头像">
     </div>
@@ -25,27 +25,37 @@ export default {
     }
   },
   data() {
+    // let positionList;
+    // this.$store.state.middleData.forEach(item => {
+    //   if (item.name === 'persion') {
+    //     positionList = item.positionList
+    //   }
+    // })
+
+    // return positionList
     return {
+      name: 'persion',
       style: {},
       lifeTimeStyle: null
-    };
+    }
   },
+  // computed: {
+  //   positionList() {
+  //     this.$store.state.middleData.forEach(item => {
+  //       if (item.name === this.name) {
+  //         positionList = item.positionList
+  //       }
+  //     })
+
+  //     return positionList
+  //   }
+  // },
   methods: {
 
     /**
      * 初始化
      */
     init() {
-      const topPosition = (this.data.bornIn - this.startTime) * this.scale + 'px';
-      
-      this.$store.commit('pushPersionPositionList', this.data);
-      // 获取最后一个
-      const length = this.$store.state.persionPositionList.length;
-      const columnPosition = this.$store.state.persionPositionList[length - 1];
-      this.style = {
-        top: topPosition,
-        left: columnPosition.columnIndex * (100 + 10) + 5 + 'px'
-      };
     },
 
     /**
@@ -57,7 +67,7 @@ export default {
       }
       else {
         this.lifeTimeStyle = {
-          height: (this.data.diedIn - this.data.bornIn) * this.scale + 'px',
+          height: (this.data.diedIn - this.data.bornIn) * this.$store.state.scale + 'px',
           visibility: 'visible'
         };
       }

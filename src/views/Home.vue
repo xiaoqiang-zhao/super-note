@@ -21,15 +21,19 @@
     <section class="middle" :style="{'flex': `1 0 ${middleMinWidth}px`}">
       <HomeHeader :data="header.middle" :style="middleStyle" ref="middleHeader" :class="{'shadow': headerShadow}"/>
       <section class="content" :style="middleStyle" ref="middleContent">
-        <section class="content-item persions-container" :style="persionsContainerStyle">
-          <Persion v-for="item in persions" :key="item.name" :data="item" :scale="scale"/>
+        <section v-for="item in middleData" :key="item.name" class="content-item" :style="item.containerStyle">
+          <component
+            :is="item.name"
+            v-for="data in item.dataList"
+            :key="data.name"
+            :data="data"/>
         </section>
-        <section class="content-item books-container" :style="booksContainerStyle">
+        <!-- <section class="content-item" :style="booksContainerStyle">
           <Book v-for="item in books" :key="item.name" :data="item" :scale="scale"/>
         </section>
-        <section class="content-item technology-container" :style="technologyContainerStyle">
+        <section class="content-item" :style="technologyContainerStyle">
           <Technology v-for="item in technology" :key="item.name" :data="item" :scale="scale"/>
-        </section>
+        </section> -->
       </section>
     </section>
     <aside class="right" :class="{'shadow': rightShadow}" :style="{'flex': `0 0 ${header.right.width}px`}">
@@ -115,6 +119,9 @@ export default {
     }
   },
   computed: {
+    middleData() {
+      return this.$store.state.middleData
+    },
     // 缩放率
     scale() {
       return this.$store.state.scale
