@@ -1,5 +1,5 @@
 <template>
-<article class="technology" :style="style">
+<article class="technology" :style="data.positionData.positionStyle">
     <div class="img-container">
       <img :src="data.cover" alt="封面">
     </div>
@@ -32,19 +32,7 @@ export default {
     /**
      * 初始化
      */
-    init() {
-      const topPosition = (this.data.time - this.startTime) * this.scale + 'px';
-      
-      this.$store.commit('pushTechnologyPositionList', this.data);
-      // 获取最后一个
-      // const length = this.$store.state.technologyPositionList.length;
-      // const columnPosition = this.$store.state.technologyPositionList[length - 1];
-      this.style = {
-        top: topPosition,
-        left: '10px'
-        // left: columnPosition.columnIndex * (100 + 10) + 10 + 'px'
-      };
-    }
+    init() {}
   }
 }
 </script>

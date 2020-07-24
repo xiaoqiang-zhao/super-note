@@ -15,12 +15,12 @@ const middleData = [
     topKey: 'publicTime',
     dataList: books
   },
-  // {
-  //   name: 'technology',
-  //   title: '科技',
-  //   topKey: 'time',
-  //   dataList: technology
-  // },
+  {
+    name: 'technology',
+    title: '科技',
+    topKey: 'time',
+    dataList: technology
+  },
   // {
   //   name: 'art',
   //   title: '艺术',
@@ -71,7 +71,7 @@ function init(state) {
         // debugger
         while(positionItem && positionItem.bottomPosition >= topPosition) {
           columnIndexArr.push(positionItem.columnIndex)
-          positionItem = lastIndex > 1 ? item.dataList[--lastIndex].positionData : null
+          positionItem = lastIndex > 0 ? item.dataList[--lastIndex].positionData : null
         }
         columnIndexArr.sort()
         // 是否有空列位置
