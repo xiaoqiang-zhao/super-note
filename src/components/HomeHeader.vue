@@ -6,7 +6,7 @@
       :style="{flex: `1 0 ${item.width}px`, background: item.backgroundColor}"
       class="item">
       <template v-if="item.children">
-        <div class="title" :style="{'background-image': item.backgroundImage}">{{item.name}}</div>
+        <div class="title" :style="{'background': item.backgroundImage}">{{item.name}}</div>
         <section class="items">
           <div
             class="item"
