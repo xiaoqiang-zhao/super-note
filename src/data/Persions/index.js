@@ -154,6 +154,12 @@ export default [
     portrait: '/static/persions-portrait/AdamSmith.jpeg'
   },
   {
+    name: '詹姆斯·瓦特',
+    bornIn: 1736,
+    diedIn: 1819,
+    portrait: '/static/persions-portrait/Watt_James.jpg'
+  },
+  {
     name: '贝多芬',
     bornIn: 1770,
     diedIn: 1827,
