@@ -148,6 +148,14 @@ export default [
     portrait: '/static/persions-portrait/IsaacNewton.jpeg'
   },
   {
+    name: '巴赫',
+    bornIn: 1685,
+    diedIn: 1750,
+    portrait: '/static/persions-portrait/巴赫.jpg',
+    pro: `巴洛克时期的作曲家及管风琴、小提琴、大键琴演奏家，也是巴洛克音乐的集大成者。
+    巴赫出生于神圣罗马帝国爱森纳赫（位于今德国图林根州）的一个音乐世家`
+  },
+  {
     name: '亚当·斯密',
     bornIn: 1723,
     diedIn: 1790,
@@ -160,10 +168,29 @@ export default [
     portrait: '/static/persions-portrait/Watt_James.jpg'
   },
   {
+    name: '莫扎特',
+    bornIn: 1756,
+    diedIn: 1791,
+    portrait: '/static/persions-portrait/莫扎特.jpg',
+    pro: `神圣罗马帝国，后来的德国区域`
+  },
+  {
     name: '贝多芬',
     bornIn: 1770,
     diedIn: 1827,
-    portrait: '/static/persions-portrait/Beethoven.jpg'
+    portrait: '/static/persions-portrait/Beethoven.jpg',
+    pro: `德国作曲家，贝多芬在华语世界中被尊称为“乐圣”`
+  },
+  {
+    name: '门德尔松',
+    bornIn: 1809,
+    diedIn: 1847,
+    portrait: '/static/persions-portrait/门德尔松.jpg',
+    pro: `雅各·路德维希·费利克斯·门德尔松·巴托尔迪，德国犹太裔作曲家。
+          是难得的全能型天才，生前就被广泛认可为当代作曲家第一人，
+          更身兼钢琴家、指挥、作曲家、教师等多重身份，在短短38年的一生中创作极为丰富。
+          门德尔松的作品富于诗意，曲式完美而严谨，清楚地运用管弦乐的色彩。
+          他的《仲夏夜之梦序曲》为浪漫主义作曲家描绘神话仙境提供了先例。`
   },
   {
     name: '托尔斯泰',
