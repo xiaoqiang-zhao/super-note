@@ -28,12 +28,6 @@
             :key="data.name"
             :data="data"/>
         </section>
-        <!-- <section class="content-item" :style="booksContainerStyle">
-          <Book v-for="item in books" :key="item.name" :data="item" :scale="scale"/>
-        </section>
-        <section class="content-item" :style="technologyContainerStyle">
-          <Technology v-for="item in technology" :key="item.name" :data="item" :scale="scale"/>
-        </section> -->
       </section>
     </section>
     <aside class="right" :class="{'shadow': rightShadow}" :style="{'flex': `0 0 ${header.right.width}px`}">

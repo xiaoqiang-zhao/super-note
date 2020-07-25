@@ -7,18 +7,21 @@ const middleData = [
     name: 'persion',
     title: '人',
     topKey: 'bornIn',
+    backgroundColor: '#4F86C6',
     dataList: persions
   },
   {
     name: 'book',
     title: '书',
     topKey: 'publicTime',
+    backgroundColor: '#6c83ba',
     dataList: books
   },
   {
     name: 'technology',
     title: '科技',
     topKey: 'time',
+    backgroundColor: '#a87ea2',
     dataList: technology
   },
   // {

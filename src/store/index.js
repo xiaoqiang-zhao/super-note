@@ -48,29 +48,26 @@ export default Vuex.createStore({
         ]
       },
       middle: {
-        width: 1020,
+        width: 0,
         items: [
           {
             name: '包罗万象',
-            width: 1020,
+            width: 0,
             backgroundImage: 'linear-gradient(to right, #4F86C6 , #6c83ba, #a87ea2)',
             // 二层结构
             children: [
               {
                 name: '人',
-                // 6 列，110 * 6 + 10
-                width: 670,
+                width: 120,
                 backgroundColor: '#4F86C6'
               },
               {
                 name: '书',
-                // 3 列，110 * 3 + 10
-                width: 340,
+                width: 120,
                 backgroundColor: '#6c83ba'
               },
               {
                 name: '科技',
-                // 1 列，110 + 10
                 width: 120,
                 backgroundColor: '#a87ea2'
               }
@@ -118,6 +115,22 @@ export default Vuex.createStore({
      */
     initMiddleLayoutData(state) {
       state.middleData = middleData.init(state)
+
+      // 更新头部数据
+      const firstItem = state.header.middle.items[0];
+      firstItem.children = []
+      let middleWidth = 0
+      state.middleData.forEach(item => {
+        const width = (item.maxColumnIndex + 1) * 110 + 10
+        firstItem.children.push({
+          name: item.title,
+          width,
+          backgroundColor: item.backgroundColor
+        })
+        middleWidth += width
+      })
+      firstItem.width = middleWidth
+      state.header.middle.width = middleWidth
     }
   },
   actions: {
