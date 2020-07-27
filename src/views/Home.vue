@@ -23,7 +23,7 @@
       <section class="content" :style="middleStyle" ref="middleContent">
         <section v-for="item in middleData" :key="item.name" class="content-item" :style="item.containerStyle">
           <component
-            :is="item.name"
+            :is="item.componentName"
             v-for="data in item.dataList"
             :key="data.name"
             :data="data"/>
@@ -50,7 +50,7 @@ import TimeLine from '@/components/TimeLine'
 import Dynasty from '@/components/Dynasty'
 import Persion from '@/components/Persion'
 import Book from '@/components/Book'
-import Technology from '@/components/Technology'
+import TimeAndCover from '@/components/TimeAndCover'
 
 import chinaDynasty from '@/components/Dynasty/china';
 import europeDynasty from '@/components/Dynasty/europe';
@@ -66,7 +66,7 @@ export default {
     Dynasty,
     Persion,
     Book,
-    Technology
+    TimeAndCover
   },
   data() {
     return {

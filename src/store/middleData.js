@@ -7,6 +7,7 @@ const middleData = [
     name: 'persion',
     title: '人',
     topKey: 'bornIn',
+    componentName: 'Persion',
     backgroundColor: '#4F86C6',
     dataList: persions
   },
@@ -21,27 +22,42 @@ const middleData = [
     name: 'technology',
     title: '科技',
     topKey: 'time',
+    componentName: 'TimeAndCover',
     backgroundColor: '#a87ea2',
     dataList: technology
   },
-  // {
-  //   name: 'art',
-  //   title: '艺术',
-  //   topKey: 'time',
-  //   dataList: []
-  // },
-  // {
-  //   name: 'building',
-  //   title: '建筑',
-  //   topKey: 'time',
-  //   dataList: []
-  // },
-  // {
-  //   name: 'incident',
-  //   title: '事件',
-  //   topKey: 'startTime',
-  //   dataList: []
-  // }
+  {
+    name: 'art',
+    title: '艺术',
+    topKey: 'time',
+    componentName: 'TimeAndCover',
+    backgroundColor: '#BB3D71',
+    dataList: []
+  },
+  {
+    name: 'building',
+    title: '建筑',
+    topKey: 'time',
+    componentName: 'TimeAndCover',
+    backgroundColor: '#E695A8',
+    dataList: []
+  },
+  {
+    name: 'incident',
+    title: '事件',
+    topKey: 'startTime',
+    componentName: 'TimeAndCover',
+    backgroundColor: '#F4B6D5',
+    dataList: []
+  },
+  {
+    name: 'concept',
+    title: '概念',
+    topKey: 'time',
+    componentName: 'TimeAndCover',
+    backgroundColor: '#FFCDB2',
+    dataList: []
+  }
 ]
 
 // 添加通用字段

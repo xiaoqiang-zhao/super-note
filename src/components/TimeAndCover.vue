@@ -6,7 +6,7 @@
     <footer>
       <div class="name">{{data.name}}</div>
     </footer>
-    <aside class="public-time">
+    <aside class="time">
       <header>时间: {{data.time}}</header>
     </aside>
   </article>
@@ -68,7 +68,7 @@ export default {
     }
   }
 
-  .public-time {
+  .time {
     visibility: hidden;
     position: absolute;
     z-index: 2;
@@ -82,7 +82,7 @@ export default {
       text-align: center;
     }
   }
-  &:hover .public-time {
+  &:hover .time {
     visibility: visible;
   }
 }
