@@ -2,6 +2,8 @@
 import persions from '@/data/Persions'
 import books from '@/data/Books'
 import technology from '@/data/Technology'
+import building from '@/data/Building'
+
 const middleData = [
   {
     name: 'persion',
@@ -39,8 +41,9 @@ const middleData = [
     title: '建筑',
     topKey: 'time',
     componentName: 'TimeAndCover',
+    articleItemHeight: 90,
     backgroundColor: '#E695A8',
-    dataList: []
+    dataList: building
   },
   {
     name: 'incident',
@@ -79,7 +82,10 @@ function init(state) {
     item.dataList.forEach((data, index) => {
       const columnIndexArr = []
       const topPosition = data[item.topKey] * state.scale
-      const bottomPosition = topPosition + 141 + 10
+      const articleItemHeight = item.articleItemHeight ? item.articleItemHeight : 141
+      // 上下最小间距
+      const minBottomSpace = 10
+      const bottomPosition = topPosition + articleItemHeight + minBottomSpace
       let lastIndex = index
       let columnIndex = 0
 
@@ -87,7 +93,6 @@ function init(state) {
       if (lastIndex > 0) {
         // 获取水平方向上有重叠的元素的 columnIndex 数组
         let positionItem = item.dataList[--lastIndex].positionData
-        // debugger
         while(positionItem && positionItem.bottomPosition >= topPosition) {
           columnIndexArr.push(positionItem.columnIndex)
           positionItem = lastIndex > 0 ? item.dataList[--lastIndex].positionData : null
@@ -114,10 +119,17 @@ function init(state) {
         top: (data[item.topKey] - state.startTime) * state.scale + 'px',
         left: columnIndex * (100 + 10) + 10 + 'px'
       }
+      let imgContainerStyle = null
+      if (item.articleItemHeight) {
+        imgContainerStyle = {
+          height: item.articleItemHeight - 20 + 'px'
+        }
+      }
       data.positionData = {
         bottomPosition,
         columnIndex,
-        positionStyle
+        positionStyle,
+        imgContainerStyle
       }
     })
 

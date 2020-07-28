@@ -1,6 +1,6 @@
 <template>
 <article class="technology" :style="data.positionData.positionStyle">
-    <div class="img-container">
+    <div class="img-container" :style="data.positionData.imgContainerStyle">
       <img :src="data.cover" alt="封面">
     </div>
     <footer>
@@ -24,7 +24,8 @@ export default {
   },
   data() {
     return {
-      style: {}
+      style: {
+      }
     };
   },
   methods: {
