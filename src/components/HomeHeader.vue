@@ -26,8 +26,6 @@
 <script>
 export default {
   props: ['data'],
-  mounted() {
-  },
   computed: {
 
   },

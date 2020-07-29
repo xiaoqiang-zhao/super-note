@@ -167,13 +167,13 @@ mounted() {
 
 export default {
   data() {
-    const columns = [];
-    const rows = [];
+    const columns = []
+    const rows = []
     for (let i = 1; i < 11; i++) {
-      columns.push(i);
+      columns.push(i)
     }
     for (let i = 1; i < 16; i++) {
-      rows.push(i);
+      rows.push(i)
     }
     return {
       columns,
@@ -183,31 +183,31 @@ export default {
     }
   },
   mounted() {
-    const thisObj = this;
-    const middleHeader = thisObj.$refs.fixedLayoutMiddleHeader;
-    const middleContent = thisObj.$refs.fixedLayoutMiddleContent;
-    const maxScrollLeft = middleContent.scrollWidth - middleContent.offsetWidth;
-    const maxScrollTop = middleContent.scrollHeight - middleContent.offsetHeight;
+    const thisObj = this
+    const middleHeader = thisObj.$refs.fixedLayoutMiddleHeader
+    const middleContent = thisObj.$refs.fixedLayoutMiddleContent
+    const maxScrollLeft = middleContent.scrollWidth - middleContent.offsetWidth
+    const maxScrollTop = middleContent.scrollHeight - middleContent.offsetHeight
     this.$refs.fixedLayoutContainer.addEventListener('wheel', event => {
 
       // 横向滚动，中间部分的头部和内容滚动
       if (event.wheelDeltaX) {
         let scrollLeft = this.scrollLeft - (event.wheelDeltaX / 3)
-        this.scrollLeft = scrollLeft > maxScrollLeft ? maxScrollLeft : scrollLeft;
-        middleHeader.scrollTo(this.scrollLeft, 0);
-        middleContent.scrollTo(this.scrollLeft - 1, this.scrollTop);
+        this.scrollLeft = scrollLeft > maxScrollLeft ? maxScrollLeft : scrollLeft
+        middleHeader.scrollTo(this.scrollLeft, 0)
+        middleContent.scrollTo(this.scrollLeft - 1, this.scrollTop)
       }
       // 纵向滚动，左中右的内容区
       if (event.wheelDeltaY) {
-        let scrollTop = this.scrollTop - (event.wheelDeltaY / 3);
-        this.scrollTop = scrollTop > maxScrollTop ? maxScrollTop : scrollTop;
-        middleContent.scrollTo(this.scrollLeft, this.scrollTop - 1);
-        thisObj.$refs.fixedLayoutLeftContent.scrollTo(this.scrollLeft, this.scrollTop - 1);
-        thisObj.$refs.fixedLayoutRightContent.scrollTo(this.scrollLeft, this.scrollTop - 1);
+        let scrollTop = this.scrollTop - (event.wheelDeltaY / 3)
+        this.scrollTop = scrollTop > maxScrollTop ? maxScrollTop : scrollTop
+        middleContent.scrollTo(this.scrollLeft, this.scrollTop - 1)
+        thisObj.$refs.fixedLayoutLeftContent.scrollTo(this.scrollLeft, this.scrollTop - 1)
+        thisObj.$refs.fixedLayoutRightContent.scrollTo(this.scrollLeft, this.scrollTop - 1)
       }
 
-      event.preventDefault();
-    });
+      event.preventDefault()
+    })
   }
 }
 </script>

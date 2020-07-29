@@ -18,4 +18,4 @@ export default [
     publicTime: 2015,
     cover: '/static/book-cover/父母的语言.jpg'
   }
-];
+]

@@ -25,4 +25,4 @@ export default [
     cover: '/static/technology-cover/管装颜料.png',
     pro: '此前画家离开工作室代价巨大，1841年美国人约翰・戈夫・兰德在美国为这一发明申请了专利'
   }
-];
+]

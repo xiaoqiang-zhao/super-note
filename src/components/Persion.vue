@@ -25,31 +25,12 @@ export default {
     }
   },
   data() {
-    // let positionList;
-    // this.$store.state.middleData.forEach(item => {
-    //   if (item.name === 'persion') {
-    //     positionList = item.positionList
-    //   }
-    // })
-
-    // return positionList
     return {
       name: 'persion',
       style: {},
       lifeTimeStyle: null
     }
   },
-  // computed: {
-  //   positionList() {
-  //     this.$store.state.middleData.forEach(item => {
-  //       if (item.name === this.name) {
-  //         positionList = item.positionList
-  //       }
-  //     })
-
-  //     return positionList
-  //   }
-  // },
   methods: {
 
     /**
@@ -63,13 +44,13 @@ export default {
      */
     lifeTime() {
       if (this.lifeTimeStyle) {
-        this.lifeTimeStyle = null;
+        this.lifeTimeStyle = null
       }
       else {
         this.lifeTimeStyle = {
           height: (this.data.diedIn - this.data.bornIn) * this.$store.state.scale + 'px',
           visibility: 'visible'
-        };
+        }
       }
     }
   }

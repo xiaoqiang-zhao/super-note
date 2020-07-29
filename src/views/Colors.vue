@@ -55,20 +55,20 @@ export default {
     ]
     const stairMatrix = [];
     colors.forEach((item, index) => {
-      const line = [];
+      const line = []
       for(let i = 0; i < index + 1; i++) {
         line.push([
           colors[i],
           item
-        ]);
+        ])
       }
       stairMatrix.push(line)
-    });
+    })
 
-    const gridMatrix = [];
-    this.createGridMatrix(colors, gridMatrix);
+    const gridMatrix = []
+    this.createGridMatrix(colors, gridMatrix)
 
-    const gridMatrix2 = [];
+    const gridMatrix2 = []
     const jumpColors = [
       '#67D5B5',
       '#84B1ED',
@@ -80,8 +80,8 @@ export default {
       '#C89EC4',
       '#F6B352',
       '#F68657'
-    ];
-    this.createGridMatrix(jumpColors, gridMatrix2);
+    ]
+    this.createGridMatrix(jumpColors, gridMatrix2)
     
     return {
       colors: [
@@ -103,15 +103,15 @@ export default {
           line.push([
             lineItem,
             rowItem
-          ]);
+          ])
         })
         // 调到前面
         const item = line.splice(index, 1)
         line.unshift(item[0])
         matrix.push(line)
-      });
+      })
 
-      return matrix;
+      return matrix
     }
   }
 }

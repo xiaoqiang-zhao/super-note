@@ -117,10 +117,10 @@ export default Vuex.createStore({
       state.middleData = middleData.init(state)
 
       // 更新头部数据
-      const firstItem = state.header.middle.items[0];
+      const firstItem = state.header.middle.items[0]
       firstItem.children = []
       let middleWidth = 0
-      let backgroundImage = 'linear-gradient(to right';
+      let backgroundImage = 'linear-gradient(to right'
       state.middleData.forEach(item => {
         const width = (item.maxColumnIndex + 1) * 110 + 10
         firstItem.children.push({
@@ -128,7 +128,7 @@ export default Vuex.createStore({
           width,
           backgroundColor: item.backgroundColor
         })
-        const isFirst = !middleWidth;
+        const isFirst = !middleWidth
         middleWidth += width
         backgroundImage += `, ${item.backgroundColor} ${isFirst ? 0 : middleWidth}px`
       })
