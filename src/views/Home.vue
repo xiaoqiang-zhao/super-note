@@ -52,11 +52,11 @@ import Persion from '@/components/Persion'
 import Book from '@/components/Book'
 import TimeAndCover from '@/components/TimeAndCover'
 
-import chinaDynasty from '@/components/Dynasty/china';
-import europeDynasty from '@/components/Dynasty/europe';
-import persions from '@/data/Persions';
-import books from '@/data/Books';
-import technology from '@/data/Technology';
+import chinaDynasty from '@/components/Dynasty/china'
+import europeDynasty from '@/components/Dynasty/europe'
+import persions from '@/data/Persions'
+import books from '@/data/Books'
+import technology from '@/data/Technology'
 
 export default {
   name: 'home',
@@ -119,50 +119,24 @@ export default {
     // 缩放率
     scale() {
       return this.$store.state.scale
-    },
-    persionColumnMax() {
-      return this.$store.state.persionColumnMax;
-    },
-    bookColumnMax() {
-      return this.$store.state.bookColumnMax;
-    },
-    technologyColumnMax() {
-      return this.$store.state.technologyColumnMax;
-    }
-  },
-  watch: {
-    persionColumnMax() {
-      this.persionsContainerStyle = {
-        flex: `1 0 ${(this.persionColumnMax + 1) * 110 + 10}px`
-      }
-    },
-    bookColumnMax() {
-      this.booksContainerStyle = {
-        flex: `1 0 ${(this.bookColumnMax + 1) * 110 + 10}px`
-      }
-    },
-    technologyColumnMax() {
-      this.technologyContainerStyle = {
-        flex: `1 0 ${this.technologyColumnMax * 110 + 10}px`
-      }
     }
   },
   mounted() {
-    const leftWidth = this.$store.state.header.left.width;
-    const rightWhidth = this.$store.state.header.right.width;
-    const rootWidth = this.$refs.homePageRoot.offsetWidth;
-    const minWidth = this.middleMinWidth;
-    let middleWidth = rootWidth - leftWidth - rightWhidth;
+    const leftWidth = this.$store.state.header.left.width
+    const rightWhidth = this.$store.state.header.right.width
+    const rootWidth = this.$refs.homePageRoot.offsetWidth
+    const minWidth = this.middleMinWidth
+    let middleWidth = rootWidth - leftWidth - rightWhidth
     
-    middleWidth = middleWidth > minWidth ? middleWidth : minWidth;
+    middleWidth = middleWidth > minWidth ? middleWidth : minWidth
     this.middleStyle = {
       'max-width': `${middleWidth}px`
     };
     this.$nextTick(() => {
-      this.bindScrollEvent();
-    });
+      this.bindScrollEvent()
+    })
 
-    this.$store.commit('initMiddleLayoutData');
+    this.$store.commit('initMiddleLayoutData')
   },
 
   methods: {
@@ -171,52 +145,52 @@ export default {
      * 改变比例尺，时间与页面尺寸的比例在 1:1 和 1:10 之间切换
      */
     changeScale(value) {
-      this.scale = value;
+      this.scale = value
     },
 
     /**
      * 绑定滚动条事件
      */
     bindScrollEvent() {
-      const bottomSpace = 300;
-      const leftContent = this.$refs.leftContent;
-      const rightContent = this.$refs.rightContent;
-      const middleContent = this.$refs.middleContent;
-      const middleHeader = this.$refs.middleHeader.$el;
-      const maxScrollLeft = middleContent.scrollWidth - middleContent.offsetWidth;
-      const maxScrollTop = middleContent.scrollHeight - middleContent.offsetHeight + bottomSpace;
+      const bottomSpace = 300
+      const leftContent = this.$refs.leftContent
+      const rightContent = this.$refs.rightContent
+      const middleContent = this.$refs.middleContent
+      const middleHeader = this.$refs.middleHeader.$el
+      const maxScrollLeft = middleContent.scrollWidth - middleContent.offsetWidth
+      const maxScrollTop = middleContent.scrollHeight - middleContent.offsetHeight + bottomSpace
 
       if (maxScrollLeft > 0) {
-        this.rightShadow = true;
+        this.rightShadow = true
       }
       // 给每一个 contentItem 指定一个较大的高度，防止 contentItem 高度不同引起的滚动条高度不一致
-      const scrollHeight = middleContent.scrollHeight;
+      const scrollHeight = middleContent.scrollHeight
       document.getElementsByClassName('content-item').forEach(element => {
-        element.style.height = `${scrollHeight + bottomSpace}px`;
-      });
+        element.style.height = `${scrollHeight + bottomSpace}px`
+      })
       
       this.$refs.homePageRoot.addEventListener('wheel', event => {
         // 横向滚动，中间部分的头部和内容滚动
         if (event.wheelDeltaX) {
           let scrollLeft = this.scrollLeft - (event.wheelDeltaX / 3)
-          this.scrollLeft = scrollLeft > maxScrollLeft ? maxScrollLeft : scrollLeft;
-          middleHeader.scrollTo(this.scrollLeft, 0);
-          middleContent.scrollTo(this.scrollLeft - 1, this.scrollTop);
+          this.scrollLeft = scrollLeft > maxScrollLeft ? maxScrollLeft : scrollLeft
+          middleHeader.scrollTo(this.scrollLeft, 0)
+          middleContent.scrollTo(this.scrollLeft - 1, this.scrollTop)
           
-          this.leftShadow = this.scrollLeft > 0;
-          this.rightShadow = this.scrollLeft < maxScrollLeft;
+          this.leftShadow = this.scrollLeft > 0
+          this.rightShadow = this.scrollLeft < maxScrollLeft
         }
         // 纵向滚动，左中右的内容区
         if (event.wheelDeltaY) {
-          let scrollTop = this.scrollTop - (event.wheelDeltaY / 3);
-          this.scrollTop = scrollTop > maxScrollTop ? maxScrollTop : scrollTop;
-          middleContent.scrollTo(this.scrollLeft, this.scrollTop - 1);
-          leftContent.scrollTo(this.scrollLeft, this.scrollTop - 1);
-          rightContent.scrollTo(this.scrollLeft, this.scrollTop - 1);
-          this.headerShadow = this.scrollTop > 0;
+          let scrollTop = this.scrollTop - (event.wheelDeltaY / 3)
+          this.scrollTop = scrollTop > maxScrollTop ? maxScrollTop : scrollTop
+          middleContent.scrollTo(this.scrollLeft, this.scrollTop - 1)
+          leftContent.scrollTo(this.scrollLeft, this.scrollTop - 1)
+          rightContent.scrollTo(this.scrollLeft, this.scrollTop - 1)
+          this.headerShadow = this.scrollTop > 0
         }
-        event.preventDefault();
-      });
+        event.preventDefault()
+      })
     }
   }
 }
