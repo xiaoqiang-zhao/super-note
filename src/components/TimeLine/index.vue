@@ -89,7 +89,7 @@ export default {
      * 改变比例尺，时间与页面尺寸的比例在 1:1 和 1:10 之间切换
      */
     // changeScale() {
-    //   this.$store.commit('setScale', this.scale === 1 ? 10 : 1);
+    //   this.$store.commit('setScale', this.scale === 1 ? 10 : 1)
     // },
 
     /**
@@ -97,46 +97,46 @@ export default {
      */
     init() {
       // 首位圈
-      const startTime = this.startTime;
-      const endTime = this.endTime;
-      const step = this.step;
-      const scale = this.scale;
-      const lineDotList = [];
-      let dotTime = startTime;
+      const startTime = this.startTime
+      const endTime = this.endTime
+      const step = this.step
+      const scale = this.scale
+      const lineDotList = []
+      let dotTime = startTime
 
       while (dotTime < endTime) {
-        const dotTimeForStepRemainder = dotTime % step;
+        const dotTimeForStepRemainder = dotTime % step
 
-        let topDot = null;
-        let bottomDot = null;
-        let lineLength;
-        let time;
-        let bottomTime;
+        let topDot = null
+        let bottomDot = null
+        let lineLength
+        let time
+        let bottomTime
 
         // 大圈起始位
         if (dotTime === startTime && startTime % step === 0) {
           topDot = {
             dotTime: startTime,
             dotNumber: startTime / step
-          };
+          }
         }
         
         if (dotTime + step < endTime) {
-          time = dotTimeForStepRemainder === 0 ? step : Math.abs(dotTimeForStepRemainder);
+          time = dotTimeForStepRemainder === 0 ? step : Math.abs(dotTimeForStepRemainder)
         }
         else {
-          time = endTime - dotTime;
+          time = endTime - dotTime
         }
-        lineLength = time * scale;
+        lineLength = time * scale
 
         if (dotTimeForStepRemainder === 0) {
-          bottomTime = dotTime + step;
+          bottomTime = dotTime + step
         }
         else if (dotTimeForStepRemainder < 0) {
-          bottomTime = dotTime - dotTimeForStepRemainder;
+          bottomTime = dotTime - dotTimeForStepRemainder
         }
         else {
-          bottomTime = dotTime + (step - dotTimeForStepRemainder);
+          bottomTime = dotTime + (step - dotTimeForStepRemainder)
         }
 
         if (bottomTime <= endTime) {
@@ -151,12 +151,12 @@ export default {
           lineLength,
           spaceList: this.createSpaceList(dotTime, dotTime + step < endTime ? bottomTime : endTime),
           bottomDot
-        });
+        })
 
-        dotTime = bottomTime;
+        dotTime = bottomTime
       }
 
-      this.lineDotList = lineDotList;
+      this.lineDotList = lineDotList
     },
 
     /**
@@ -166,50 +166,50 @@ export default {
      * @param {Number} toTime 结束
      */
     createSpaceList(fromTime, toTime) {
-      const arr = [];
-      const space = this.space;
-      const scale = this.scale;
+      const arr = []
+      const space = this.space
+      const scale = this.scale
 
       while (fromTime + space < toTime) {
-        const fromTimeForSpaceRemainder = fromTime % space;
-        let time;
-        let timePoint;
+        const fromTimeForSpaceRemainder = fromTime % space
+        let time
+        let timePoint
         if (fromTime + space < toTime) {
           if (fromTimeForSpaceRemainder === 0) {
-            time = space;
+            time = space
           }
           else if (fromTimeForSpaceRemainder < 0) {
-            time = Math.abs(fromTimeForSpaceRemainder);
+            time = Math.abs(fromTimeForSpaceRemainder)
           }
           else {
-            time = fromTimeForSpaceRemainder;
+            time = fromTimeForSpaceRemainder
           }
         }
         else {
-          time = toTime - fromTime;
+          time = toTime - fromTime
         }
         // 减一是刻度 Dom 占的高度
-        const height = time * scale - 1;
+        const height = time * scale - 1
 
         if (fromTimeForSpaceRemainder === 0) {
-          timePoint = fromTime + space;
+          timePoint = fromTime + space
         }
         else if (fromTimeForSpaceRemainder < 0) {
-          timePoint = fromTime - fromTimeForSpaceRemainder;
+          timePoint = fromTime - fromTimeForSpaceRemainder
         }
         else {
-          timePoint = fromTime + ( space - fromTimeForSpaceRemainder);
+          timePoint = fromTime + ( space - fromTimeForSpaceRemainder)
         }
 
         arr.push({
           timePoint,
           timePointStr: timePoint < 0 ? `${-timePoint}BC` : timePoint,
           height
-        });
+        })
 
-        fromTime = timePoint;
+        fromTime = timePoint
       }
-      return arr;
+      return arr
     }
   }
 }

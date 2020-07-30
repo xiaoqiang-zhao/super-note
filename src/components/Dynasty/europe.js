@@ -35,4 +35,4 @@ const chinaDynasty = {
   ]
 }
 
-export default chinaDynasty;
+export default chinaDynasty
