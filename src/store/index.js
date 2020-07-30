@@ -9,15 +9,6 @@ export default Vuex.createStore({
     // 缩放率
     scale: 1,
     middleData,
-    // 历史人物列表
-    persionPositionList: [],
-    persionColumnMax: 0,
-    // 书
-    bookPositionList: [],
-    bookColumnMax: 0,
-    // 科技
-    technologyPositionList: [],
-    technologyColumnMax: 0,
     header: {
       left: {
         width: 270,
@@ -90,27 +81,8 @@ export default Vuex.createStore({
   mutations: {
 
     /**
-     * 设置缩放率
-     *
-     * @param {Object}} state 
-     * @param {Number} value 缩放率
-     */
-    setScale(state, value) {
-      // 这里有两种写法:
-      // 一种采用 actions，
-      // 一个 action 方法中调用两个 mutation 方法，每个 mutation 方法只改变一个 state 属性，
-      // 在业务组件中用 this.$store.dispatch('changeScale', 10) 调用
-      // action 一般用于异步数据同步
-      // 
-      // 另一种在一个 mutation 方法中改变两个 state 属性
-      state.persionPositionList = []
-      state.bookPositionList = []
-      state.scale = value
-    },
-
-    /**
      * 初始化中间部分的布局数据
-     * 
+     *
      * @param {Object}} state
      */
     initMiddleLayoutData(state) {
@@ -138,7 +110,18 @@ export default Vuex.createStore({
     }
   },
   actions: {
+
+    /**
+     * 设置缩放率
+     *
+     * @param {Object}} state 
+     * @param {Number} value 缩放率
+     */
+    setScale(context, value) {
+      context.state.scale = value
+      context.commit('initMiddleLayoutData')
+    }
+
   },
-  modules: {
-  }
+  modules: {}
 })

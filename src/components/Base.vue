@@ -2,19 +2,15 @@
 /**
  * @file 需要在调整缩放比例后重新渲染的组件的公共部分
  */
-import store from '../store'
 
 export default {
-  props: {
+  computed: {
     // 缩放比例, 一年:像素高度, 默认是 1，可在 1 和 10 之间切换
-    scale: {
-      type: Number,
-      default: store.state.scale
+    scale() {
+      return this.$store.state.scale
     },
-    // 开始时间年份，用于确定在时间方向上的位置
-    startTime: {
-      tyle: Number,
-      default: -1600
+    startTime() {
+      return this.$store.state.startTime
     }
   },
   mounted() {

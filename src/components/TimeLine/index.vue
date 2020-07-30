@@ -1,8 +1,6 @@
 <template>
   <article class="time-line">
-    <!-- <div class="title" @click="changeScale">
-      时间轴
-    </div> -->
+    <div class="switch" @click="changeScale">切</div>
     <template v-for="item in lineDotList">
       <div
         v-if="item.topDot"
@@ -88,9 +86,9 @@ export default {
     /**
      * 改变比例尺，时间与页面尺寸的比例在 1:1 和 1:10 之间切换
      */
-    // changeScale() {
-    //   this.$store.commit('setScale', this.scale === 1 ? 10 : 1)
-    // },
+    changeScale() {
+      this.$store.dispatch('setScale', this.scale === 1 ? 10 : 1)
+    },
 
     /**
      * 创建点线数据
@@ -224,6 +222,19 @@ export default {
   width: 50px;
   margin-right: 5px;
   font-size: 12px;
+
+  .switch {
+    position: absolute;
+    top: -10px;
+    right: 0;
+    color: #fff;
+    border-radius: 23px;
+    width: 20px;
+    line-height: 20px;
+    text-align: center;
+    background: #67d5b5;
+    cursor: pointer;
+  }
 
   .line {
     align-self: flex-end;
