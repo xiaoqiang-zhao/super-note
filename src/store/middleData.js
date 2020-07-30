@@ -17,6 +17,7 @@ const middleData = [
     name: 'book',
     title: '书',
     topKey: 'publicTime',
+    componentName: 'Book',
     backgroundColor: '#6c83ba',
     dataList: books
   },
