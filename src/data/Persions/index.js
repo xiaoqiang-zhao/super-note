@@ -5,9 +5,10 @@
 export default [
   {
     name: '史前人总述',
-    bornIn: -1595,
+    bornIn: -1600,
     diedIn: -1500,
-    portrait: '/static/persions-portrait/Homer.jpeg'
+    portrait: '/static/persions-portrait/史前人总述.jpeg',
+    pro: ``
   },
   {
     name: '荷马',
