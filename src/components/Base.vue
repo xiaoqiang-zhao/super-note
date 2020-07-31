@@ -8,9 +8,6 @@ export default {
     // 缩放比例, 一年:像素高度, 默认是 1，可在 1 和 10 之间切换
     scale() {
       return this.$store.state.scale
-    },
-    startTime() {
-      return this.$store.state.startTime
     }
   },
   mounted() {

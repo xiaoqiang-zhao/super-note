@@ -62,10 +62,10 @@ export default {
       default: 100
     },
     // 小节点，默认 10 年，注意小节点需要能整除大节点
-    space: {
-      type: Number,
-      default: 50
-    },
+    // space: {
+    //   type: Number,
+    //   default: 50
+    // },
     // 大节点 hover 时是否展示 Tooltip
     isShowTooltip: {
       type: Boolean,
@@ -80,7 +80,13 @@ export default {
       lineDotList: []
     }
   },
-  mounted() {},
+  computed: {
+    space() {
+      // 小刻度间隔，默认 10 年，注意小节点需要能整除大节点
+      // 一年一像素时每 50 年一间隔，一年 10 像素时每 10 年一间隔
+      return this.$store.state.scale < 5 ? 50 : 10
+    }
+  },
   methods: {
 
     /**
