@@ -5,9 +5,9 @@ import middleData from './middleData'
 export default Vuex.createStore({
   state: {
     // 开始时间
-    startTime: -1660,
+    startTime: -1600,
     // 缩放率
-    scale: 1,
+    scale: 10,
     middleData,
     header: {
       left: {

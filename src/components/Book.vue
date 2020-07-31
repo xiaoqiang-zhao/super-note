@@ -1,5 +1,5 @@
 <template>
-<article class="book" :style="data.positionData.positionStyle">
+<article class="book" :style="positionStyle">
     <div class="img-container">
       <img :src="data.cover" alt="封面">
     </div>
@@ -24,7 +24,7 @@ export default {
   },
   data() {
     return {
-      style: {}
+      positionStyle: null
     }
   },
   methods: {

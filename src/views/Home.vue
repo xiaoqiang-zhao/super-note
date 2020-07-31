@@ -102,6 +102,8 @@ export default {
       technology,
       middleMinWidth: 300,
       middleStyle: {},
+      maxScrollLeft: 0,
+      maxScrollTop: 0,
       scrollLeft: 0,
       scrollTop: 0,
       leftShadow: false,
@@ -118,6 +120,11 @@ export default {
       return this.$store.state.scale
     }
   },
+  watch: {
+    scale() {
+      this.setSize()
+    }
+  },
   mounted() {
     const leftWidth = this.$store.state.header.left.width
     const rightWhidth = this.$store.state.header.right.width
@@ -130,6 +137,7 @@ export default {
       'max-width': `${middleWidth}px`
     };
     this.$nextTick(() => {
+      this.setSize()
       this.bindScrollEvent()
     })
 
@@ -138,22 +146,10 @@ export default {
 
   methods: {
 
-    /**
-     * 改变比例尺，时间与页面尺寸的比例在 1:1 和 1:10 之间切换
-     */
-    changeScale(value) {
-      this.scale = value
-    },
+    setSize() {
 
-    /**
-     * 绑定滚动条事件
-     */
-    bindScrollEvent() {
       const bottomSpace = 300
-      const leftContent = this.$refs.leftContent
-      const rightContent = this.$refs.rightContent
       const middleContent = this.$refs.middleContent
-      const middleHeader = this.$refs.middleHeader.$el
       const maxScrollLeft = middleContent.scrollWidth - middleContent.offsetWidth
       const maxScrollTop = middleContent.scrollHeight - middleContent.offsetHeight + bottomSpace
 
@@ -165,8 +161,23 @@ export default {
       document.getElementsByClassName('content-item').forEach(element => {
         element.style.height = `${scrollHeight + bottomSpace}px`
       })
+
+      this.maxScrollLeft = maxScrollLeft
+      this.maxScrollTop = maxScrollTop
+    },
+
+    /**
+     * 绑定滚动条事件
+     */
+    bindScrollEvent() {
+      const leftContent = this.$refs.leftContent
+      const rightContent = this.$refs.rightContent
+      const middleContent = this.$refs.middleContent
+      const middleHeader = this.$refs.middleHeader.$el
       
       this.$refs.homePageRoot.addEventListener('wheel', event => {
+        const maxScrollLeft = this.maxScrollLeft
+        const maxScrollTop = this.maxScrollTop
         // 横向滚动，中间部分的头部和内容滚动
         if (event.wheelDeltaX) {
           let scrollLeft = this.scrollLeft - (event.wheelDeltaX / 3)

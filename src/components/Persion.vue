@@ -1,5 +1,5 @@
 <template>
-  <article class="persion" :style="data.positionData.positionStyle" @click="lifeTime">
+  <article class="persion" :style="positionStyle" @click="lifeTime">
     <div class="img-container">
       <img :src="data.portrait" alt="头像">
     </div>
@@ -26,18 +26,11 @@ export default {
   },
   data() {
     return {
-      name: 'persion',
-      style: {},
+      positionStyle: null,
       lifeTimeStyle: null
     }
   },
   methods: {
-
-    /**
-     * 初始化
-     */
-    init() {
-    },
 
     /**
      * lifeTime 展示切换和计算

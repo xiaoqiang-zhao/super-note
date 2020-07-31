@@ -4,6 +4,12 @@
 
 export default [
   {
+    name: '史前人总述',
+    bornIn: -1595,
+    diedIn: -1500,
+    portrait: '/static/persions-portrait/Homer.jpeg'
+  },
+  {
     name: '荷马',
     bornIn: -873,
     diedIn: -798,

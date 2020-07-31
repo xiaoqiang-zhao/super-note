@@ -11,11 +11,11 @@ export default {
     }
   },
   mounted() {
-    this.init()
+    this.update()
   },
   watch: {
     scale() {
-      this.init()
+      this.update()
     }
   },
   methods: {
@@ -23,7 +23,14 @@ export default {
     /**
      * 初始化，占位函数，会被实例化组件的方法替代
      */
-    init() {}
+    init() {},
+
+    update() {
+      this.init && this.init()
+      if (this.data) {
+        this.positionStyle = this.data.positionData.positionStyle
+      }
+    }
   }
 }
 </script>

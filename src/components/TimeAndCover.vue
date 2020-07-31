@@ -1,5 +1,5 @@
 <template>
-<article class="technology" :style="data.positionData.positionStyle">
+<article class="technology" :style="positionStyle">
     <div class="img-container" :style="data.positionData.imgContainerStyle">
       <img :src="data.cover" alt="封面">
     </div>
@@ -23,14 +23,11 @@ export default {
     }
   },
   data() {
-    return {}
+    return {
+      positionStyle: null
+    }
   },
   methods: {
-
-    /**
-     * 初始化
-     */
-    init() {}
   }
 }
 </script>
