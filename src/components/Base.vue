@@ -11,11 +11,11 @@ export default {
     }
   },
   mounted() {
-    this.update()
+    this.updatePositionStyle()
   },
   watch: {
     scale() {
-      this.update()
+      this.updatePositionStyle()
     }
   },
   methods: {
@@ -25,7 +25,7 @@ export default {
      */
     init() {},
 
-    update() {
+    updatePositionStyle() {
       this.init && this.init()
       if (this.data) {
         this.positionStyle = this.data.positionData.positionStyle
