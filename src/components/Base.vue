@@ -25,6 +25,11 @@ export default {
      */
     init() {},
 
+    /**
+     * 当切换缩放比利时，更新位置样式
+     * 当组件外部的 data 中 positionStyle 已经改变后，组件没有自动更新 Dom，
+     * 这里需要手动触发，否者不会重新排列
+     */
     updatePositionStyle() {
       this.init && this.init()
       if (this.data) {
