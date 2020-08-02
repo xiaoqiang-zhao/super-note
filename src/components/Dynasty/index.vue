@@ -41,6 +41,10 @@ export default {
     };
   },
   methods: {
+
+    /**
+     * 初始化函数
+     */
     init() {
       const list = [];
       const clors = this.colors

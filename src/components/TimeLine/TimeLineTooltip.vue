@@ -41,11 +41,4 @@ export default {
   color: #000;
   white-space: nowrap;
 }
-.start,
-.end {
-  .time-line-tooltip {
-    top: -1px;
-    left: 20px;
-  }
-}
 </style>

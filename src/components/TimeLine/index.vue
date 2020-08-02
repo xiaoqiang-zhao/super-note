@@ -45,12 +45,10 @@ import TimeLineTooltip from './TimeLineTooltip'
 export default {
   mixins: [Base],
   name: 'TimeLine',
+  components: {
+    TimeLineTooltip
+  },
   props: {
-    // 开始时间年份
-    startTime: {
-      tyle: Number,
-      default: -1600
-    },
     // 结束时间年份
     endTime: {
       type: Number,
@@ -61,19 +59,11 @@ export default {
       type: Number,
       default: 100
     },
-    // 小节点，默认 10 年，注意小节点需要能整除大节点
-    // space: {
-    //   type: Number,
-    //   default: 50
-    // },
     // 大节点 hover 时是否展示 Tooltip
     isShowTooltip: {
       type: Boolean,
       default: true
     }
-  },
-  components: {
-    TimeLineTooltip
   },
   data() {
     return {
@@ -81,10 +71,17 @@ export default {
     }
   },
   computed: {
+
+    // 小刻度间隔
     space() {
-      // 小刻度间隔，默认 10 年，注意小节点需要能整除大节点
+      // 默认 10 年，注意小节点需要能整除大节点
       // 一年一像素时每 50 年一间隔，一年 10 像素时每 10 年一间隔
       return this.$store.state.scale < 5 ? 50 : 10
+    },
+
+    // 开始时间年份
+    startTime() {
+      return this.$store.state.startTime
     }
   },
   methods: {
