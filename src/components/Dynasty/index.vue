@@ -38,7 +38,7 @@ export default {
   data() {
     return {
       list: []
-    };
+    }
   },
   methods: {
 
@@ -46,20 +46,20 @@ export default {
      * 初始化函数
      */
     init() {
-      const list = [];
+      const list = []
       const clors = this.colors
       let index = 0
       this.dynastyData.list.forEach(item => {
         item.style = {
           background: clors[index],
           height: (item.to - item.from) * this.scale + 'px'
-        };
+        }
         list.push(item)
-        index++;
+        index++
         if (index + 1 > clors.length) {
           index = 0
         }
-      });
+      })
       this.list = list
     }
   }
