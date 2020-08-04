@@ -193,14 +193,24 @@ export default {
       // 横向滚动，中间部分的头部和内容滚动
       if (event.wheelDeltaX) {
         let scrollLeft = this.scrollLeft - (event.wheelDeltaX / 3)
-        this.scrollLeft = scrollLeft > maxScrollLeft ? maxScrollLeft : scrollLeft
+
+        // 边界值处理
+        scrollLeft = scrollLeft > maxScrollLeft ? maxScrollLeft : scrollLeft
+        scrollLeft = scrollLeft < 0 ? 0 : scrollLeft
+
+        this.scrollLeft = scrollLeft
         middleHeader.scrollTo(this.scrollLeft, 0)
         middleContent.scrollTo(this.scrollLeft - 1, this.scrollTop)
       }
       // 纵向滚动，左中右的内容区
       if (event.wheelDeltaY) {
         let scrollTop = this.scrollTop - (event.wheelDeltaY / 3)
-        this.scrollTop = scrollTop > maxScrollTop ? maxScrollTop : scrollTop
+
+        // 边界值处理
+        scrollTop = scrollTop > maxScrollTop ? maxScrollTop : scrollTop
+        scrollTop = scrollTop < 0 ? 0 : scrollTop
+
+        this.scrollTop = scrollTop
         middleContent.scrollTo(this.scrollLeft, this.scrollTop - 1)
         thisObj.$refs.fixedLayoutLeftContent.scrollTo(this.scrollLeft, this.scrollTop - 1)
         thisObj.$refs.fixedLayoutRightContent.scrollTo(this.scrollLeft, this.scrollTop - 1)
